@@ -1,0 +1,25 @@
+{
+  "name": "inverted-index",
+  "version": "1.0.0",
+  "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-iamao/inverted-index.git"
+  },
+  "keywords": [
+    "inverted-index"
+  ],
+  "author": "Inumidun Amao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-iamao/inverted-index/issues"
+  },
+  "homepage": "https://github.com/andela-iamao/inverted-index#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
