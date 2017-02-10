@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/andela-iamao/inverted-index#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.7",
     "gulp": "^3.9.1"
   }
 }
