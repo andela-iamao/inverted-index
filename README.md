@@ -1,11 +1,21 @@
-# inverted-index
-An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file)
+# Inverted Index
+An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file).
 
+Inverted index makes it easy to search contents of a file, especially when there a more than one files included.
 
-### Automate Development
-
-To reload browser automatically when changes are detected in html, css or js file while in development, you need to :
+To get started, you need to:
 * Clone repository
-* run : npm install -g gulp browser-sync
-* run : npm install
-* run : gulp runserver
+ * `git clone https://github.com/andela-iamao/inverted-index.git`
+* Run the commands : 
+ * `npm install`
+ 
+#### Requirements
+* git
+* nodejs and npm
+* gulp
+
+
+#### License
+
+Inverted Index is [MIT licensed](https://github.com/andela-iamao/inverted-index/blob/feature/139563053/Automate-reloading-on-dev/License.md).
+
