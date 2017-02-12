@@ -2,10 +2,11 @@ function eslintFunctionTest() {
   return true;
 }
 
-eslintTest();
-var eslintObjectTest = function () {
+eslintFunctionTest();
+
+const eslintObjectTest = () => {
   return true;
 }
 
-var p = 'dsdssdssdsd';
-var o = new Object();
+let p = 'dsdssdssdsd';
+let o = new Object();
