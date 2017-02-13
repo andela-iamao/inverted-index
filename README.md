@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/andela-iamao/inverted-index/badges/gpa.svg)](https://codeclimate.com/github/andela-iamao/inverted-index) [![Build Status](https://travis-ci.org/andela-iamao/inverted-index.svg?branch=master)](https://travis-ci.org/andela-iamao/inverted-index)
+[![Code Climate](https://codeclimate.com/github/andela-iamao/inverted-index/badges/gpa.svg)](https://codeclimate.com/github/andela-iamao/inverted-index) [![Build Status](https://travis-ci.org/andela-iamao/inverted-index.svg?branch=master)](https://travis-ci.org/andela-iamao/inverted-index) [![Coverage Status](https://coveralls.io/repos/github/andela-iamao/inverted-index/badge.svg?branch=master)](https://coveralls.io/github/andela-iamao/inverted-index?branch=master)
 
 # Inverted Index
 An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file).
