@@ -8,5 +8,7 @@ const eslintObjectTest = () => {
   return true;
 }
 
-let p = 'dsdssdssdsd';
+var der = new Object();
+
+var p = 'dsdssdssdsd';
 let o = new Object();
