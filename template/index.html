@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+  <meta http-equiv="x-ua-compatible" content='ie=edge' />
+  <title>Inverted Index</title>
+  <link rel='stylesheet' href='../dist/lib/bootstrap/css/bootstrap.min.css' type='text/css' />
+  <link rel='stylesheet' href='../dist/lib/font-awesome/css/font-awesome.min.css' type="text/css" />
+  <link rel='stylesheet' href='css/style.css' type='text/css' />
+</head>
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-custom-green">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Inverted Index</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+       
+      </ul>
+      <form id='search-form' class="form-inline my-2 my-lg-0">
+        <div class='input-group'>
+          <input class="form-control" type="text" placeholder="Enter words">
+          <div class='input-group-btn'>
+            <button type="button"  class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Search
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#" onclick="openModal()">test.json</a>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-outline-primary my-2 my-sm-0" onclick='openAbout()' type="submit">About</button>
+    </div>
+  </nav>
+  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >About Inverted Index</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <section>
+                <article>
+                  <h5>What is Inverted Index ?</h5>
+                  <p>
+                    In computer science, an inverted index (also referred to as postings file or inverted file) is an index data structure storing a mapping from content, such as words or numbers, to its locations in a database file, or in a document or a set of documents (named in contrast to a Forward Index, which maps from documents to content).
+                  </p>
+                  <h5>What is its purpose ?</h5>
+                  <p>
+                    The purpose of an inverted index is to allow fast full text searches, at a cost of increased processing when a document is added to the database. The inverted file may be the database file itself, rather than its index. It is the most popular data structure used in document retrieval systems,[1] used on a large scale for example in search engines.
+                  </p>
+                  <h5>Its application</h5>
+                  <p>
+                    The inverted index data structure is a central component of a typical search engine indexing algorithm. A goal of a search engine implementation is to optimize the speed of the query: find the documents where word X occurs. Once a forward index is developed, which stores lists of words per document, it is next inverted to develop an inverted index. Querying the forward index would require sequential iteration through each document and to each word to verify a matching document. The time, memory, and processing resources to perform such a query are not always technically realistic. Instead of listing the words per document in the forward index, the inverted index data structure is developed which lists the documents per word.
+                  </p>
+                </article>
+              </section>
+             
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class='container' id='landing'>
+    <div class='col-md-12 d-flex justify-content-center' id='upload'>
+      <label class="btn btn-default btn-file">
+        <span class='btn-custom-success-large fa fa-file'>
+          
+        </span>
+        <br />
+        <br />
+        <span>
+          Select file(s) <span class='fa fa-arrow-up faa-bounce animated'></span>
+        </span>
+        <input type="file" style="display: none;" multiple /> 
+      </label>
+    </div>
+    <div class='col-md-12 d-flex justify-content-center'>
+      <p class='text-muted' id='selected'>
+        <b>Selected File(s):</b>  
+      </p>
+      <div id='selected-files'>
+        
+      </div>
+    </div>
+    <div class='col-md-12 d-flex justify-content-center'>
+      <button id='upload-btn' onclick='handleClick()' class='btn btn-custom-success'>Upload</button>
+    </div>
+  </div>
+  <div class='clearfix'></div>
+  <div id='view-two'>
+    <div class='row'>
+      <div id='div-one' class='col-md-3 row'>
+        <div class='col-md-6'>
+          <span class='text-file-name'>
+            <b>test.json </b>
+          </span>
+        </div>
+        <div class='col-md-6'>
+          <button class='btn btn-custom-success' onclick='createIndex()'>Create Index</button>
+        </div>
+      </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >Search Results for 'and destroy enters' in test.json</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class='table table-striped'>
+                <thead>
+                  <tr>
+                    <th>Words</th>
+                    <th>Alice in Wonderland</th>
+                    <th>Lord of the Rings : The Fellowship of The Ring</th>
+                    <th>Lord of the Rings : The Fellowship of The Ring</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope='row'>and</th>
+                    <td><span class='text-check fa fa-check'></span></td>
+                    <td><span class='text-check fa fa-check'></span></td>
+                    <td><span class='text-check fa fa-check'></span></td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>destroys</th>
+                    <td><span class='text-check fa fa-check'></span></td>
+                    <td><span class='text-check fa fa-check'></span></td>
+                    <td><span class='text-check fa fa-check'></span></td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>enters</th>
+                    <td><span class='text-check fa fa-check'></span></td>
+                    <td> </td>
+                    <td> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='div-two' class='col-md-9'>
+        <div class='d-flex justify-content-center' id='table-index'>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th colspan="4" class='table-header' >Index for : test.json</th>
+              </tr>
+              <tr>
+                <th>Words</th>
+                <th>Alice In Wonderland</th>
+                <th>Lord of The Rings : The Fellowship of The Ring</th>
+                <th>Lord of The Rings : The Fellowship of The Ring</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">a</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">alice</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td> </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <th scope="row">alliance</th>
+                <td> </td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                
+              </tr>
+              <tr>
+                <th scope="row">an</th>
+                <td> </td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">and</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">destroy</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">dwarf</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">elf</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">enters</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td> </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <th scope="row">falls</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td> </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <th scope="row">fellowship</th>
+                <td> </td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+              <tr>
+                <th scope="row">full</th>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td> </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <th scope="row">hobbit</th>
+                <td> </td>
+                <td><span class='text-check fa fa-check'></span></td>
+                <td><span class='text-check fa fa-check'></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <script src='../dist/lib/jquery/jquery-3.1.1.min.js' type='text/javascript'></script>
+  <script src='../dist/lib/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+  <script src='js/template.js' type="text/javascript"></script>
+</body>
+</html>
