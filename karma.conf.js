@@ -16,7 +16,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'js/angular.min.js',
-      'js/angular-mocks.js'
+      'js/angular-mocks.js',
+      'js/helpers.js',
+      'js/inverted-index.js',
+      'js/components/index-table/index-table.module.js',
+      'js/components/index-table/index-table.component.js',
+      'js/components/**/*spec.js'
     ],
 
     plugins: [

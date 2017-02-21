@@ -1,0 +1,28 @@
+<div >
+  <div ng-controller="UploadController">
+    <input id="files" type='file' ng-model="file" onchange="angular.element(this).scope().changeInput()" multiple/>
+  </div>
+  <div ng-if="index.data">
+    
+		<table>
+			<thead>
+				<tr >
+          <th >
+            Words
+          </th>
+					<th ng-repeat="item in index.title track by $index">
+              {{item}}
+          </th>
+				</tr>	
+			</thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in index.genIndex">
+          <td >{{key}}</td>
+          <td ng-repeat='v in index.title track by $index'>
+            {{index.InvertedIndex.isFound(v, value)}}
+          </td>
+        </tr>
+      </tbody>
+		</table>
+	</div>
+</div>
