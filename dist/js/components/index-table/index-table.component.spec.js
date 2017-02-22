@@ -61,7 +61,7 @@ describe('indexTable', () => {
       });
       it('should return false when title or text field is empty', ()=>{
         expect(ctrl.InvertedIndex.isValid([{'title':'Great', 'text':''}])).toBe(false);
-        expect(ctrl.InvertedIndex.isValid([{'title':'', 'text':'Gatsby and Daisy'}])).toBe(false);
+        expect(ctrl.InvertedIndex.isValid([{'title':'', 'author':'Scott Fizgerald', 'text':'Gatsby and Daisy'}])).toBe(false);
       }); 
     })
 		
@@ -70,8 +70,8 @@ describe('indexTable', () => {
         expect(ctrl.InvertedIndex.generateIndex(data)).toEqual(index);
       });
     })
-     it('should create a book data with 3 books', ()=>{
-			expect(ctrl.InvertedIndex.search('bad good bot knock', ctrl.InvertedIndex.generateIndex(data))).toEqual({
+     it('should search the generated index', ()=>{
+			expect(ctrl.InvertedIndex.search('bad  good bot    knock', ctrl.InvertedIndex.generateIndex(data))).toEqual({
         'bad' : ['A bad bot'],
         'bot' : ['A good bot', 'A bad bot'],
         'knock' : ['A bad bot'],
