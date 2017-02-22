@@ -22,7 +22,6 @@ $('#div-two').css({ height: (window.innerHeight - 50) + 'px' });
  * @params {}
  * @returns {} #landing becomes none and #view-two becomes block
  */
-
 function handleClick() {
   $('#landing').css({ display: 'none' });
   $('#view-two').css({ display: 'block' });
@@ -33,7 +32,6 @@ function handleClick() {
  * @params {}
  * @returns {} #search-form becomes none and table becomes block
  */
-
 function createIndex() {
   $('#search-form').css({ display: 'block' });
   $('table').css({ display: 'block' });
