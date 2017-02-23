@@ -28,8 +28,8 @@
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
     "karma": "^1.4.1",
-    "karma-chrome-launcher": "^1.0.0",
-    "karma-firefox-launcher": "^1.7.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0"
   }
 }
