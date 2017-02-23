@@ -40,6 +40,25 @@ describe('indexTable', () => {
         'tex' : 'Give a good bot a penny a day'
       }
     ];
+
+    class FakeInvertedIndex {
+
+    }
+
+    describe('Should test for the instance of ctrl.InvertedIndex', () => {
+      it('Should return true if ctrl.InvertedIndex is an instance of Object', () => {
+        expect(ctrl.InvertedIndex instanceof Object).toBe(true);
+      });
+      it('Should return false if ctrl.InvertedIndex is not an instance of Array', () => {
+        expect(ctrl.InvertedIndex instanceof Array).toBe(false);
+      });
+      it('Should return true if ctrl.InvertedIndex is an instance of InvertedIndex class', () => {
+        expect(ctrl.InvertedIndex instanceof InvertedIndex).toBe(true);
+      });
+      it('Should return false if ctrl.InvertedIndex is not an instance of FakeInvertedIndex class', () => {
+        expect(ctrl.InvertedIndex instanceof FakeInvertedIndex).toBe(false);
+      });
+    })
     
     describe('Should test for validity of data', () =>{
       it('should return true on valid json data', ()=>{
