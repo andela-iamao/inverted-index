@@ -1,6 +1,6 @@
-angular.module('invertedIndex', ['indexTable']).
+angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar']).
     controller('UploadController', ['$rootScope','$scope', ($rootScope, $scope, $state) => {
-  
+      
       const readFile = (file) => {
         
         return new Promise((resolve, reject) => {
@@ -22,7 +22,22 @@ angular.module('invertedIndex', ['indexTable']).
         });
         
       }
+
+      const checkUpload = (event) => {
+        console.log('fileuploaded', event);
+
+      }
       
+      $scope.onUpload = () => {
+          const files = document.getElementById('files').files;
+          let uploaded = [];
+          for (let i = 0; i < files.length; i++) {
+            uploaded.push({ 'name': files[i].name, 'size': files[i].size + ' bytes', 'fulldata': files[i]})
+          }
+          $rootScope.uploaded_files = uploaded;
+          $rootScope.$broadcast('files uploaded');
+      }
+
       $scope.changeInput = () => {
         const file = document.getElementById('files').files[0];
         readFile(file).then((response) => {
@@ -30,6 +45,11 @@ angular.module('invertedIndex', ['indexTable']).
            $rootScope.$broadcast('reload');
         });
       };
+
+      $rootScope.nextView = (view) => {
+        $rootScope.view = view;
+        $rootScope.$broadcast('change view');
+      }
 }])
 
 angular.module('indexTable')
@@ -38,6 +58,7 @@ angular.module('indexTable')
     controller : function InvertedTableController($rootScope, $scope) {
       const self = this;
       $scope.generatedIndex = [];
+      
       this.InvertedIndex = new InvertedIndex();
       function setData (){
         self.data = ($rootScope.data) ? $rootScope.data : false; 
@@ -48,7 +69,7 @@ angular.module('indexTable')
           $scope.$apply();
         }
       }
-      
+
       $scope.$on('reload', setData);
       setData();
       

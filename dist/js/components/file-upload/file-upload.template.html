@@ -1,0 +1,35 @@
+<div class='container' id='landing' ng-show="show" ng-controller="UploadController">
+  <div class='alert alert-danger' ng-show='uploadCtrl.error' id='danger-alert' role='alert'>
+      <p ng-repeat='error in uploadCtrl.error'>
+        <b>{{error.file}}</b>{{error.msg}}
+      </p>
+  </div>
+  <div class='col-md-12 d-flex justify-content-center'  id='upload'>
+
+    <label class="btn btn-default btn-file">
+      <span class='btn-custom-success-large fa fa-file'></span>
+      <br />
+      <br />
+      <span>
+          Select file(s) <span class='fa fa-arrow-up faa-bounce animated'></span>
+        </span>
+        <input type="file" id='files' style="display: none;" onchange="angular.element(this).scope().onUpload()" multiple /> 
+      </label>
+    </div>
+    <div class='col-md-12 d-flex justify-content-center'>
+      <p class='text-muted' id='selected'>
+        <b>Selected File(s):</b>
+         
+      </p>
+      <div id='selected-files'>
+        <ul>
+          <li ng-repeat="file in uploaded_files">
+            {{file.name}} - {{file.size}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='col-md-12 d-flex justify-content-center'>
+      <button id='upload-btn' onclick="angular.element(this).scope().check('menu view')" class='btn btn-custom-success'>Upload</button>
+    </div>
+  </div>

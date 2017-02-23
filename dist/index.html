@@ -1,18 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='invertedIndex'>
 <head>
     <meta charset='utf-8' />
     <title>Inverted Index</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous' />
+    <link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css' type='text/css' />
+    <link rel='stylesheet' href='lib/font-awesome/css/font-awesome.min.css' type="text/css" />
     <link rel='stylesheet' href='css/style.css' type='text/css' />
+    <!-- <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'></script>
+    <script src='app.module.js' text='text/javascript'></script> -->
+</head>
+<body ng-controller="UploadController">
+  <nav-bar></nav-bar>
+  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >About Inverted Index</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <section>
+            <article>
+              <h5>What is Inverted Index ?</h5>
+              <p>
+                In computer science, an inverted index (also referred to as postings file or inverted file) is an index data structure storing a mapping from content, such as words or numbers, to its locations in a database file, or in a document or a set of documents (named in contrast to a Forward Index, which maps from documents to content).
+              </p>
+              <h5>What is its purpose ?</h5>
+              <p>
+                The purpose of an inverted index is to allow fast full text searches, at a cost of increased processing when a document is added to the database. The inverted file may be the database file itself, rather than its index. It is the most popular data structure used in document retrieval systems,[1] used on a large scale for example in search engines.
+              </p>
+              <h5>Its application</h5>
+              <p>
+                The inverted index data structure is a central component of a typical search engine indexing algorithm. A goal of a search engine implementation is to optimize the speed of the query: find the documents where word X occurs. Once a forward index is developed, which stores lists of words per document, it is next inverted to develop an inverted index. Querying the forward index would require sequential iteration through each document and to each word to verify a matching document. The time, memory, and processing resources to perform such a query are not always technically realistic. Instead of listing the words per document in the forward index, the inverted index data structure is developed which lists the documents per word.
+              </p>
+            </article>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+    <file-upload></file-upload>
+    <file-menu></file-menu>
+    <index-table></index-table>
+   <!--  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
+     -->
 
     <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'></script>
-    <script src='app.module.js' text='text/javascript'></script>
-</head>
-<body>
-    <h2>Inverted Index</h2>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
+    <script src='lib/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src='js/inverted-index.js'></script>
+    <script src='js/components/nav-bar/nav-bar.module.js'></script>
+    <script src='js/components/nav-bar/nav-bar.component.js'></script>
+    <script src='js/components/index-table/index-table.module.js'></script>
+    <script src='js/components/index-table/index-table.component.js'></script>
+    <script src='js/components/file-upload/file-upload.module.js'></script>
+    <script src='js/components/file-upload/file-upload.component.js'></script>
+    <script src='js/components/file-menu/file-menu.module.js'></script>
+    <script src='js/components/file-menu/file-menu.component.js'></script>
     <script src='js/app.js'></script>
+    
 </body>
 </html>

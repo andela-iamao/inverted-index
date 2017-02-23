@@ -7,7 +7,7 @@ describe('indexTable', () => {
 	describe('InvertedTableController', () => {
 		let ctrl;
 
-		beforeEach(inject( ($componentController) => {
+		beforeEach(inject(($componentController) => {
 			ctrl = $componentController('indexTable');
 		}));
 
