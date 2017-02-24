@@ -1,7 +1,12 @@
 <div class='container' id='landing' ng-show="show" ng-controller="UploadController">
   <div class='alert alert-danger' ng-show='uploadCtrl.error' id='danger-alert' role='alert'>
       <p ng-repeat='error in uploadCtrl.error'>
-        <b>{{error.file}}</b>{{error.msg}}
+        <span ng-show="error.file">
+          <b>{{error.file}}</b>{{error.msg}}
+        </span>
+        <span ng-show="error.message">
+          <b>{{error.message}}</b>
+        </span>
       </p>
   </div>
   <div class='col-md-12 d-flex justify-content-center'  id='upload'>
@@ -31,5 +36,6 @@
     </div>
     <div class='col-md-12 d-flex justify-content-center'>
       <button id='upload-btn' onclick="angular.element(this).scope().check('menu view')" class='btn btn-custom-success'>Upload</button>
+      <!--<button id='upload-btn' onclick="angular.element(this).scope().onUpload()" class='btn btn-custom-success'>Upload</button>-->
     </div>
   </div>

@@ -5,34 +5,53 @@ angular.module('fileUpload')
 			$scope.uploaded_files = [];
 			
 			function fileDetails() {
-		    $scope.uploaded_files = $rootScope.uploaded_files;
-    		$scope.$apply();
-    	}
+		   		$scope.uploaded_files = $rootScope.uploaded_files;
+    			$scope.$apply();
+    		}
 			
+    
+
 			$scope.show = true;
 			const self = this;
 		
 			$scope.check = (nextview) => {
 				let next = true;
 				self.error = [];
-				if ($scope.uploaded_files.length) {
-					$scope.uploaded_files.map((file) => {
-						if (file.name.search(/.json/i) === -1) {
-							next = false;
-							self.error.push({file : file.name, msg: ' is not a valid json file'});
-						}
-					});
-					if (next) {
-						$rootScope.nextView(nextview);
-					} else {
-						console.log(self.error);
-						$scope.$apply();
-					}
-				}
+       
+        if ($rootScope.error) {
+          console.log("Big ass error")
+          self.error.push({message : $rootScope.error.msg})
+        } else {
+          console.log($scope.uploaded_files);
+          if ($scope.uploaded_files.length) {
+            $scope.uploaded_files.map((file) => {
+              if (file.name.search(/.json/i) === -1) {
+                next = false;
+                self.error.push({file : file.name, msg: ' is not a valid json file'});
+              }
+            });
+            if (next) {
+              console.log(next, 'is next');
+              $rootScope.changeInput($scope.uploaded_files, $rootScope.nextView, ()=> {
+                if ($rootScope.error) {
+                  console.log("Big ass error")
+                  self.error.push({message : $rootScope.error.message})
+                  $scope.$apply();
+                }
+              });
+              
+           } else {
+              console.log(self.error);
+              $scope.$apply();
+            }
+          } else {
+            self.error.push({message: 'You must select a json file'});
+            $scope.$apply();
+          }
+        }
 			}
 	  	
 			function isView() {
-				console.log('changing view');
 				if ($rootScope.view === 'upload view') {
 					$scope.show = true;
 				} else {

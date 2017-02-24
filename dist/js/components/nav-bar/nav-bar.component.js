@@ -5,6 +5,13 @@ angular.module('navBar')
 			const self = this;
 			this.showSearch = false;
 			this.files;
+			this.query = '';
+			this.openModal = (file) => {
+				let query = self.query;
+				$rootScope.search_query = {query, file}
+				$rootScope.$broadcast('search');
+				$('#myModal').modal('show');
+			}
 
 			function isView() {
 				if ($rootScope.view !== 'upload view') {

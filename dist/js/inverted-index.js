@@ -1,5 +1,13 @@
 class InvertedIndex {
 
+	/**
+	 * 
+	 * 
+	 * @param {any} data 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
 	isValid(data) {
 		if(!data) return false;
 		if(data.constructor !== Array) return false;
@@ -14,6 +22,14 @@ class InvertedIndex {
 		return true;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @param {any} data 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
 	sort(data) {
 		let sorted = {};
 		Object.keys(data).sort().forEach((key) => {
@@ -22,6 +38,14 @@ class InvertedIndex {
 		return sorted;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @param {any} data 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
 	generateIndex(data) {
 		let index = {};
 		let sorted_index = {};
@@ -44,7 +68,16 @@ class InvertedIndex {
 		return sorted_index;
 	}
   
-  search(query, data) {
+  /**
+	 * 
+	 * 
+	 * @param {any} query 
+	 * @param {any} data 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
+	search(query, data) {
     const words= Object.keys(data)
     const query_array = query.split(" ");
     let result = {};
@@ -58,6 +91,14 @@ class InvertedIndex {
     return sorted_result;
   }
 
+	/**
+	 * 
+	 * 
+	 * @param {any} data 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
 	fetchTitle(data) {
 		let title = data.map((item) => {
 			return item.title;
@@ -65,7 +106,16 @@ class InvertedIndex {
 		return title;
 	}
   
-  isFound(x, y) {
+  /**
+	 * 
+	 * 
+	 * @param {any} x 
+	 * @param {any} y 
+	 * @returns 
+	 * 
+	 * @memberOf InvertedIndex
+	 */
+	isFound(x, y) {
     if (y.indexOf(x) === -1) {
       return 'y';
     }

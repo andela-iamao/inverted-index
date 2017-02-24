@@ -44,6 +44,16 @@ describe('indexTable', () => {
     class FakeInvertedIndex {
 
     }
+    const f = [
+  {
+    "name": "Alice",
+    "fame": "Alice falls into a rabbit hole and enters a world full of imagination."
+  },
+  {
+    "fame": "The Lord",
+    "fame": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
+  }
+]
 
     describe('Should test for the instance of ctrl.InvertedIndex', () => {
       it('Should return true if ctrl.InvertedIndex is an instance of Object', () => {
@@ -73,6 +83,9 @@ describe('indexTable', () => {
       it('should return false on empty arguments', ()=>{
         expect(ctrl.InvertedIndex.isValid()).toBe(false);
       });
+      it('should return false on wrong format', ()=>{
+        expect(ctrl.InvertedIndex.isValid(f)).toBe(false);
+      });
       it('should return false on  invalid arguments', ()=>{
         expect(ctrl.InvertedIndex.isValid('A json file')).toBe(false);
         expect(ctrl.InvertedIndex.isValid([])).toBe(false);
@@ -88,7 +101,6 @@ describe('indexTable', () => {
       it('should return index from data', ()=>{
         expect(ctrl.InvertedIndex.generateIndex(data)).toEqual(index);
       });
-    })
      it('should search the generated index', ()=>{
 			expect(ctrl.InvertedIndex.search('bad  good bot    knock', ctrl.InvertedIndex.generateIndex(data))).toEqual({
         'bad' : ['A bad bot'],
@@ -96,8 +108,7 @@ describe('indexTable', () => {
         'knock' : ['A bad bot'],
         'good' : ['A good bot']
       });
-
-
 		});
-	});
+    });
+  })
 });
