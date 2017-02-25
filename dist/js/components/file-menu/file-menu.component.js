@@ -6,6 +6,13 @@ angular.module('fileMenu')
 			$scope.show_menu = false;
 			$scope.uploads = [];
 			const self = this;
+			this.createIndex = (filename) => {
+				self.index = {name: filename, data: this.InvertedIndex.generateIndex($rootScope.data[filename]), title:this.InvertedIndex.fetchTitle($rootScope.data[filename]), isFound:this.InvertedIndex.isFound};
+				$rootScope.index_data = self.index;
+				$rootScope.$broadcast('setdata');
+			}
+			this.InvertedIndex = new InvertedIndex();
+			$rootScope.generatedIndex = {};
 			function render(data, fn) {
 				$scope.uploads = data;
 				fn();

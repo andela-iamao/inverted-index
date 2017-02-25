@@ -1,1 +1,1 @@
-angular.module('indexTable', []);
+angular.module('indexTable', ['fileMenu']);

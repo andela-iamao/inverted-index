@@ -1,31 +1,24 @@
-
-
-<!-- 
-<div >
-  <div ng-controller="UploadController">
-    <input id="files" type='file' ng-model="file" onchange="angular.element(this).scope().changeInput()" multiple/>
-  </div>
-  <div ng-if="index.data">
-    
-		<table>
-			<thead>
-				<tr >
-          <th >
-            Words
-          </th>
-					<th ng-repeat="item in index.title track by $index">
-              {{item}}
-          </th>
-				</tr>	
-			</thead>
+<div class='d-flex justify-content-center' id='table-index'>
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th colspan="4" class='table-header' >Index for : {{dataset.name}}</th>
+        </tr>
+        <tr>
+          <th>Words</th>
+          <th ng-repeat="title in dataset.title track by $index">{{title}}</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr ng-repeat="(key, value) in index.genIndex">
-          <td >{{key}}</td>
-          <td ng-repeat='v in index.title track by $index'>
-            {{index.InvertedIndex.isFound(v, value)}}
+        <tr ng-repeat="(key, value) in dataset.data">
+          <th scope="row">{{key}}</th>
+          <td ng-repeat="title in dataset.title track by $index">
+            <span ng-if="dataset.isFound(title, value)">
+              <span class='text-check fa fa-check'></span>
+            </span>
           </td>
         </tr>
+        
       </tbody>
-		</table>
-	</div>
-</div> -->
+    </table> 
+  </div>

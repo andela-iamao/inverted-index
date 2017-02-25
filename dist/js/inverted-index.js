@@ -115,10 +115,7 @@ class InvertedIndex {
 	 * 
 	 * @memberOf InvertedIndex
 	 */
-	isFound(x, y) {
-    if (y.indexOf(x) === -1) {
-      return 'y';
-    }
-    return 'x';
-  }
+	isFound(titles, list) {
+		return (list.indexOf(titles) === -1) ? false : true;
+	}
 }

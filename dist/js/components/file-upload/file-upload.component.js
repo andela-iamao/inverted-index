@@ -8,13 +8,11 @@ angular.module('fileUpload')
 		   		$scope.uploaded_files = $rootScope.uploaded_files;
     			$scope.$apply();
     		}
-			
-    
 
 			$scope.show = true;
 			const self = this;
 		
-			$scope.check = (nextview) => {
+			$scope.check = (next_view_name) => {
 				let next = true;
 				self.error = [];
        

@@ -1,5 +1,5 @@
 angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search']).
-  controller('UploadController', ['$rootScope','$scope', ($rootScope, $scope, $state) => {
+  controller('UploadController', ['$rootScope','$scope',  ($rootScope, $scope, $state) => {
     const readFile = (file) => {
 
       return new Promise((resolve, reject) => {
@@ -42,28 +42,22 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
     }
 
     $rootScope.changeInput = (file, fn, callback) => {
-      //const file = document.getElementById('files').files[0];
-      $rootScope.data = [];
+      $rootScope.data = {};
       Object.keys(file).map((data) => {
-        console.log(file[data].fulldata)
-        readFile(file[data].fulldata).then((response, error) => {
-          //console.log(error);
-          console.log(response);
+        readFile(file[data].fulldata).then((response) => {
           if(!response) {
-            console.log('error')
             $rootScope.error = {message : 'Invalid JSON File'};
             callback();
           } else {
-            $rootScope.data.push(response);
+            //$rootScope.data.push(response);
+            $rootScope.data[file[data].name] = response;
             fn('menu view');    
           }
           
-          //console.log($rootScope.data);
+          console.log('root scope data', $rootScope.data);
                    
-        })
-      })
-      
-      //$rootScope.$broadcast('reload');
+        });
+      });
     };
 
     $rootScope.nextView = (view) => {

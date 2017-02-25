@@ -9,7 +9,7 @@
             </span>
           </div>
           <div class='col-md-4'>
-            <button class='btn btn-custom-success' onclick='createIndex()'>
+            <button class='btn btn-custom-success' ng-click='menu.createIndex(file.name)'>
               Create Index
             </button>
           </div>
@@ -19,101 +19,10 @@
       </div>
       <search></search>
       <div id='div-two' class='col-md-9'>
-        <div class='d-flex justify-content-center' id='table-index'>
-          <!-- <table class="table table-striped">
-            <thead>
-              <tr>
-                <th colspan="4" class='table-header' >Index for : test.json</th>
-              </tr>
-              <tr>
-                <th>Words</th>
-                <th>Alice In Wonderland</th>
-                <th>Lord of The Rings : The Fellowship of The Ring</th>
-                <th>Lord of The Rings : The Fellowship of The Ring</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">a</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">alice</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <th scope="row">alliance</th>
-                <td> </td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                
-              </tr>
-              <tr>
-                <th scope="row">an</th>
-                <td> </td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">and</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">destroy</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">dwarf</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">elf</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">enters</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <th scope="row">falls</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <th scope="row">fellowship</th>
-                <td> </td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-              <tr>
-                <th scope="row">full</th>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <th scope="row">hobbit</th>
-                <td> </td>
-                <td><span class='text-check fa fa-check'></span></td>
-                <td><span class='text-check fa fa-check'></span></td>
-              </tr>
-            </tbody>
-          </table> -->
+        <div ng-show='menu.index'>
+            <index-table>
+
+          </index-table>
         </div>
       </div>
       </div>
