@@ -5,16 +5,30 @@ An Inverted Index is an Index Data Structure storing a mapping from content to l
 
 Inverted index makes it easy to search contents of a file, especially when there a more than one files included.
 
+
+#### How to Use
+To use the Inverted Index app, take the following steps:
+* Select valid json file or files
+* Upload the file or files
+* On the dashboard view, click on the 'Create Index' button beneath the file you want to create its index
+* The index gets generated in a tabular form
+
+##### Getting started
+
 To get started, you need to:
 * Clone repository
  * `git clone https://github.com/andela-iamao/inverted-index.git`
 * Run the commands : 
- * `npm install`
+ * ```
+    npm install
+    gulp runserver    
+    ```
+* Open http://localhost:3000 in your browser
  
 #### Requirements
-* git
-* nodejs and npm
-* gulp
+* [git](https://git-scm.com/)
+* [nodejs and npm](https://nodejs.org/en/)
+* [gulp](http://gulpjs.com/)
 
 
 #### License
