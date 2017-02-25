@@ -19,9 +19,9 @@ module.exports = function(config) {
       'js/angular-mocks.js',
       'js/helpers.js',
       'js/inverted-index.js',
-      'js/components/index-table/index-table.module.js',
-      'js/components/index-table/index-table.component.js',
-      'js/components/**/*spec.js'
+      'js/components/file-menu/file-menu.module.js',
+      'js/components/file-menu/file-menu.component.js',
+      'js/components/file-menu/file-menu.spec.js'
     ],
 
     plugins: [

@@ -1,5 +1,8 @@
 angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search']).
   controller('UploadController', ['$rootScope','$scope',  ($rootScope, $scope, $state) => {
+
+    $rootScope.generatedIndex = [];
+
     const readFile = (file) => {
 
       return new Promise((resolve, reject) => {

@@ -9,6 +9,7 @@ angular.module('fileMenu')
 			this.createIndex = (filename) => {
 				self.index = {name: filename, data: this.InvertedIndex.generateIndex($rootScope.data[filename]), title:this.InvertedIndex.fetchTitle($rootScope.data[filename]), isFound:this.InvertedIndex.isFound};
 				$rootScope.index_data = self.index;
+				addIndex(self.index)
 				$rootScope.$broadcast('setdata');
 			}
 			this.InvertedIndex = new InvertedIndex();
@@ -17,6 +18,18 @@ angular.module('fileMenu')
 				$scope.uploads = data;
 				fn();
 			}
+
+			function addIndex(index) {
+				const found = $rootScope.generatedIndex.map((data) => {
+					if (index.name === data.name) {
+						return false;
+					}
+				})
+				if (found.indexOf(false) === -1) {
+					$rootScope.generatedIndex.push(index)
+				}
+			}
+
 			function isView() {
 				render($rootScope.uploaded_files, () => {
 					if ($rootScope.view === 'menu view') {

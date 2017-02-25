@@ -1,121 +1,64 @@
+//const Helpers = require('./helpers');
+/**
+ * @class InvertedIndex
+ */
 class InvertedIndex {
 
-	/**
-	 * 
-	 * 
-	 * @param {any} data 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	isValid(data) {
-		if(!data) return false;
-		if(data.constructor !== Array) return false;
-		if(data.length < 1) return false;
-		for (let index in data) {
-			if (!data[index].title || !data[index].text) {
-				return false;
-			} else if (data[index].title.constructor !== String || data[index].text.constructor !== String) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param {any} data 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	sort(data) {
-		let sorted = {};
-		Object.keys(data).sort().forEach((key) => {
-			sorted[key] = data[key];
-		});
-		return sorted;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param {any} data 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	generateIndex(data) {
-		let index = {};
-		let sorted_index = {};
-		data.map((book) => {
-			let text = book.text.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(" ");
-			for (let word in text) {
-				if (index[text[word]]) {
-					let word_array = index[text[word]];
-					if (word_array.indexOf(book.title) === -1 ) {
-						word_array.push(book.title);
-						index[text[word]] = word_array;
-					}
-				} else {
-					index[text[word]] = [book.title];
-				}
-			}
-		});
-		
-		sorted_index = this.sort(index);
-		return sorted_index;
-	}
-  
   /**
-	 * 
-	 * 
-	 * @param {any} query 
-	 * @param {any} data 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	search(query, data) {
-    const words= Object.keys(data)
-    const query_array = query.split(" ");
-    let result = {};
-    let sorted_result = {};
-    for (let q in query_array) {
-      if (words.indexOf(query_array[q]) !== -1) {
-        result[query_array[q]] = data[query_array[q]]
-      }
-    }
-    sorted_result = this.sort(result);
-    return sorted_result;
+   * Creates an instance of InvertedIndex.
+   * @memberOf InvertedIndex
+   */
+  constructor() {
+    this.generated_index = {};
   }
-
-	/**
-	 * 
-	 * 
-	 * @param {any} data 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	fetchTitle(data) {
-		let title = data.map((item) => {
-			return item.title;
-		});
-		return title;
-	}
-  
-  /**
-	 * 
-	 * 
-	 * @param {any} x 
-	 * @param {any} y 
-	 * @returns 
-	 * 
-	 * @memberOf InvertedIndex
-	 */
-	isFound(titles, list) {
-		return (list.indexOf(titles) === -1) ? false : true;
-	}
 }
+
+InvertedIndex.prototype.search = (query, data) => {
+  const words = Object.keys(data);
+  const queryArray = query.split(' ');
+  const result = {};
+  let sortedResult = {};
+  queryArray.map((q) => {
+    if (words.indexOf(q) !== -1) {
+      result[q] = data[q];
+    }
+    return null;
+  });
+  sortedResult = sort(result);
+  return sortedResult;
+};
+
+InvertedIndex.prototype.fetchTitle = fetchTitle;
+InvertedIndex.prototype.isFound = isFound;
+
+InvertedIndex.prototype.isValid = (data) => {
+  if (!data) return false;
+  if (data.constructor !== Array) return false;
+  if (data.length < 1) return false;
+  const valid = data.map(book => (((
+      !book.title || !book.text) ? false :
+      (book.title.constructor === String && book.text.constructor === String))));
+  return (valid.indexOf(false) === -1);
+};
+
+InvertedIndex.prototype.generateIndex = (data) => {
+  const index = {};
+  data.map((book) => {
+    const text = book.text.replace(/[^a-zA-Z ]/g, '').toLowerCase().split(' ');
+    text.forEach((word) => {
+      if (index[word]) {
+        const wordArray = index[word];
+        if (wordArray.indexOf(book.title) === -1) {
+          wordArray.push(book.title);
+          index[word] = wordArray;
+        }
+      } else {
+        index[word] = [book.title];
+      }
+    });
+    return null;
+  });
+  const sortedIndex = sort(index);
+  return sortedIndex;
+};
+//module.exports = InvertedIndex;

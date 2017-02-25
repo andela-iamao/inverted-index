@@ -1,30 +1,34 @@
-class Helpers {
-	sort(data) {
-		let sorted = {};
-		Object.keys(data).sort().forEach((key) => {
-			sorted[key] = data[key];
-		});
-		return sorted;
-	}
-
-	isValid(data) {
-		if(!data) return false;
-		if(data.constructor !== Array) return false;
-		if(data.length < 1) return false;
-		for (let index in data) {
-			if (!data[index].title || !data[index].text) {
-				return false;
-			} else if (data[index].title.constructor !== String || data[index].text.constructor !== String) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	isFound(x, y) {
-   	 if (y.indexOf(x) === -1) {
-   	   return 'y';
-   	 }
-   	 return 'x';
- 	 }	
+/**
+ * Sort an object alphabetically
+ * @param {any} data
+ * @returns sorted object
+ */
+function sort(data) {
+  const sorted = {};
+  Object.keys(data).sort().forEach((key) => {
+    sorted[key] = data[key];
+  });
+  return sorted;
 }
+
+/**
+ * Fetch all the title from a file
+ * @param {any} data
+ * @returns an array if data
+ */
+function fetchTitle(data) {
+  const title = data.map(item => item.title);
+  return title;
+}
+
+/**
+ * Check if an item is found in an array
+ * @param {any} titles
+ * @param {any} list
+ * @returns boolean
+ */
+function isFound(titles, list) {
+  return list.indexOf(titles) !== -1;
+}
+
+//module.exports = { isFound, fetchTitle, sort };

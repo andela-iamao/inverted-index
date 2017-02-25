@@ -1,2 +1,3 @@
 dist/lib/**/*.js
+dist/js/components/**/*.js
 template/js/template.js
