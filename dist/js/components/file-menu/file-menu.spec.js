@@ -22,24 +22,38 @@ describe('fileMenu', () => {
       }
     ];
     
-    const index = {'give':['A good bot', 'A bad bot'], 
-    'a':['A good bot', 'A bad bot'], 
-    'good':['A good bot'], 
-    'bot':['A good bot', 'A bad bot'], 
-    'penny':['A good bot'], 
-    'day':['A good bot'], 
-    'bad':['A bad bot'], 
-    'knock':['A bad bot'], 
-    'on' : ['A bad bot'], 
-    'the' : ['A bad bot'], 
-    'head' : ['A bad bot']}
-        
+    const index = {
+      'give': ['A good bot', 'A bad bot'], 
+      'a': ['A good bot', 'A bad bot'], 
+      'good': ['A good bot'], 
+      'bot': ['A good bot', 'A bad bot'], 
+      'penny': ['A good bot'], 
+      'day': ['A good bot'], 
+      'bad': ['A bad bot'], 
+      'knock': ['A bad bot'], 
+      'on': ['A bad bot'], 
+      'the': ['A bad bot'], 
+      'head': ['A bad bot']}
+  
     const fake_data = [
       {
         'title' : 'A good bot',
         'tex' : 'Give a good bot a penny a day'
       }
     ];
+
+    const search_all  = {
+    'file1': {
+        'good': ['A good bot'],
+        'knock': ['A bad bot'],
+        'penny': ['A good bot']
+    },
+    'file2': {
+        'good': ['A good bot'],
+        'knock': ['A bad bot'],
+        'penny': ['A good bot']
+    }
+}
 
     class FakeInvertedIndex {
 
@@ -101,14 +115,18 @@ describe('fileMenu', () => {
       it('should return index from data', ()=>{
         expect(ctrl.InvertedIndex.generateIndex(data)).toEqual(index);
       });
-     it('should search the generated index', ()=>{
-			expect(ctrl.InvertedIndex.search('bad  good bot    knock', ctrl.InvertedIndex.generateIndex(data))).toEqual({
-        'bad' : ['A bad bot'],
-        'bot' : ['A good bot', 'A bad bot'],
-        'knock' : ['A bad bot'],
-        'good' : ['A good bot']
-      });
-		});
+      it('should search the generated index', ()=>{
+			  expect(ctrl.InvertedIndex.search('bad  good bot    knock', ctrl.InvertedIndex.generateIndex(data))).toEqual({
+          'bad' : ['A bad bot'],
+          'bot' : ['A good bot', 'A bad bot'],
+          'knock' : ['A bad bot'],
+          'good' : ['A good bot']
+        });
+		  });
+      it('should search all the generated index', ()=>{
+			  expect(ctrl.InvertedIndex.searchAll('good penny knock', [{name:'file1', 
+        data:ctrl.InvertedIndex.generateIndex(data)}, {name: 'file2', data:ctrl.InvertedIndex.generateIndex(data)}])).toEqual(search_all);
+		  });
     });
   })
 });

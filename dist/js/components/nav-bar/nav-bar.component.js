@@ -8,6 +8,7 @@ angular.module('navBar')
 			this.query = '';
 			this.openModal = (file) => {
 				let query = self.query;
+				console.log("The file is ", self.files)
 				$rootScope.search_query = {query, file}
 				$rootScope.$broadcast('search');
 				$('#myModal').modal('show');

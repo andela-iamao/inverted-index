@@ -12,29 +12,17 @@
           <thead>
             <tr>
               <th>Words</th>
-              <th>Alice in Wonderland</th>
-              <th>Lord of the Rings : The Fellowship of The Ring</th>
-              <th>Lord of the Rings : The Fellowship of The Ring</th>
+              <th ng-repeat='title in search.titles'>{{title}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope='row'>and</th>
-              <td><span class='text-check fa fa-check'></span></td>
-              <td><span class='text-check fa fa-check'></span></td>
-              <td><span class='text-check fa fa-check'></span></td>
-            </tr>
-            <tr>
-              <th scope='row'>destroys</th>
-              <td><span class='text-check fa fa-check'></span></td>
-              <td><span class='text-check fa fa-check'></span></td>
-              <td><span class='text-check fa fa-check'></span></td>
-            </tr>
-            <tr>
-              <th scope='row'>enters</th>
-              <td><span class='text-check fa fa-check'></span></td>
-              <td> </td>
-              <td> </td>
+            <tr ng-repeat='(key, value) in search.data'>
+              <th scope='row'>{{key}}</th>
+              <td ng-repeat="title in search.titles track by $index">
+                <span ng-if="search.isFound(title, value)">
+                 <span class='text-check fa fa-check'></span>
+                </span>
+               </td>
             </tr>
           </tbody>
         </table>

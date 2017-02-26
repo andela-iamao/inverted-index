@@ -7,12 +7,17 @@ angular.module('fileMenu')
 			$scope.uploads = [];
 			const self = this;
 			this.createIndex = (filename) => {
-				self.index = {name: filename, data: this.InvertedIndex.generateIndex($rootScope.data[filename]), title:this.InvertedIndex.fetchTitle($rootScope.data[filename]), isFound:this.InvertedIndex.isFound};
+				self.index = {name: filename, data: this.generateIndex($rootScope.data[filename]), title:this.fetchTitle($rootScope.data[filename]), isFound:this.isFound};
 				$rootScope.index_data = self.index;
 				addIndex(self.index)
+				console.log($rootScope.generatedIndex);
 				$rootScope.$broadcast('setdata');
 			}
 			this.InvertedIndex = new InvertedIndex();
+      $rootScope.InvertedIndex = new InvertedIndex();
+      this.generateIndex = $rootScope.InvertedIndex.generateIndex;
+      this.fetchTitle = $rootScope.InvertedIndex.fetchTitle;
+      this.isFound = $rootScope.InvertedIndex.isFound;
 			$rootScope.generatedIndex = {};
 			function render(data, fn) {
 				$scope.uploads = data;
@@ -30,6 +35,12 @@ angular.module('fileMenu')
 				}
 			}
 
+      function searchData() {
+        self.result = self.InvertedIndex.search($rootScope.query, $rootScope.filename);
+        $scope.$apply();
+        console.log(result);
+      }
+
 			function isView() {
 				render($rootScope.uploaded_files, () => {
 					if ($rootScope.view === 'menu view') {
@@ -41,7 +52,8 @@ angular.module('fileMenu')
 				});
 			}
 
-			$scope.$on('change view', isView)
+      $scope.$on('earch', searchData);
+			$scope.$on('change view', isView);
 		},
 		controllerAs : 'menu'
 	})
