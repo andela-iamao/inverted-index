@@ -1,64 +1,55 @@
 angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search']).
-  controller('UploadController', ['$rootScope','$scope',  ($rootScope, $scope, $state) => {
-
+  controller('UploadController', ['$rootScope','$scope', ($rootScope, $scope) => {
     $rootScope.generatedIndex = [];
 
     const readFile = (file) => {
-
       return new Promise((resolve, reject) => {
-
-        const reader = new FileReader(); 
+        const reader = new FileReader();
         let data = [];
 
-        reader.onload = ((theFile) =>{
+        reader.onload = (() => {
           return (event) => {
             try {
-              let json_data = JSON.parse(event.target.result);
-              if (json_data) {
-                data = json_data;
+              const jsonData = JSON.parse(event.target.result);
+              if (jsonData) {
+                data = jsonData;
                 resolve(data);
               }
-            } catch (error){
+            } catch (error) {
               resolve(false);
             }
-          }
+          };
         })(file);
-        
-          reader.readAsText(file); 
-        
+        reader.readAsText(file);
       });
-    }
+    };
 
-    const checkUpload = (event) => {
-      console.log('fileuploaded', event);
-    }
-    
     $scope.onUpload = () => {
-        const files = document.getElementById('files').files;
-        let uploaded = [];
-        for (let i = 0; i < files.length; i++) {
-          uploaded.push({ 'name': files[i].name, 'size': files[i].size + ' bytes', 'fulldata': files[i]})
-        }
-        $rootScope.uploaded_files = uploaded;
-        $rootScope.$broadcast('files uploaded');
-        //$scope.changeInput(files);
-    }
+      const files = document.getElementById('files').files;
+      const uploaded = [];
+      for (let i = 0; i < files.length; i+=1) {
+        uploaded.push({ name: files[i].name, size: `${files[i].size} bytes`, fulldata: files[i] });
+      }
+      $rootScope.uploaded_files = uploaded;
+      $rootScope.$broadcast('files uploaded');
+    };
+
+    $rootScope.InvertedIndex = new InvertedIndex();
 
     $rootScope.changeInput = (file, fn, callback) => {
       $rootScope.data = {};
-      Object.keys(file).map((data) => {
+      Object.keys(file).forEach((data) => {
         readFile(file[data].fulldata).then((response) => {
-          if(!response) {
-            $rootScope.error = {message : 'Invalid JSON File'};
+          if (!response) {
+            $rootScope.error = { message: 'Invalid JSON File' };
             callback();
           } else {
-            //$rootScope.data.push(response);
             $rootScope.data[file[data].name] = response;
-            fn('menu view');    
+            fn('menu view');
           }
-          
+
           console.log('root scope data', $rootScope.data);
-                   
+
         });
       });
     };
@@ -66,5 +57,5 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
     $rootScope.nextView = (view) => {
       $rootScope.view = view;
       $rootScope.$broadcast('change view');
-    }
-}]);
+    };
+  }]);

@@ -13,9 +13,10 @@ angular.module('fileMenu')
 				console.log($rootScope.generatedIndex);
 				$rootScope.$broadcast('setdata');
 			}
+			$rootScope.InvertedIndex = new InvertedIndex();
 			this.InvertedIndex = new InvertedIndex();
-      $rootScope.InvertedIndex = new InvertedIndex();
-      this.generateIndex = $rootScope.InvertedIndex.generateIndex;
+			this.isValid = $rootScope.InvertedIndex.isValid;
+			this.generateIndex = $rootScope.InvertedIndex.generateIndex;
       this.fetchTitle = $rootScope.InvertedIndex.fetchTitle;
       this.isFound = $rootScope.InvertedIndex.isFound;
 			$rootScope.generatedIndex = {};
@@ -30,7 +31,7 @@ angular.module('fileMenu')
 						return false;
 					}
 				})
-				if (found.indexOf(false) === -1) {
+					if (found.indexOf(false) === -1) {
 					$rootScope.generatedIndex.push(index)
 				}
 			}
