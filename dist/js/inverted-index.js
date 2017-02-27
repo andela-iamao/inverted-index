@@ -1,3 +1,4 @@
+
 /**
  * function should generate index when a valid json file is passesd in
  * @param {any} data
@@ -23,6 +24,8 @@ function generateIndex(data) {
     });
     return null;
   });
+
+  // sort is found in helper.js
   const sortedIndex = sort(index);
   return sortedIndex;
 }
@@ -87,7 +90,9 @@ class InvertedIndex {
    */
   constructor() {
     this.generated_index = {};
+    // fetchTitle is found in helpers.js
     this.fetchTitle = fetchTitle;
+    // isFound is found in helpers.js
     this.isFound = isFound;
     this.isValid = isValid;
     this.generateIndex = generateIndex;

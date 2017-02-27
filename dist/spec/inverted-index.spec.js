@@ -16,15 +16,18 @@ describe('Test suite for Inverted Index Class', () => {
       expect(InvertedIndexTest instanceof InvertedIndex).toBe(true);
     });
     it('Should return false if InvertedIndexTest is not an instance of FakeInvertedIndex class', () => {
+      // FakeInvertedIndex is found in test-data.js
       expect(InvertedIndexTest instanceof FakeInvertedIndex).toBe(false);
     });
   });
 
   describe('Should test for validity of data', () => {
     it('should return true on valid json data', () => {
+      // data is found in test-data.js
       expect(InvertedIndexTest.isValid(data)).toBe(true);
     });
     it('should return false on invalid json data', () => {
+      // fake_data is found in test-data.js
       expect(InvertedIndexTest.isValid(fake_data)).toBe(false);
     });
     it('should return false on false for null', () => {
@@ -34,6 +37,7 @@ describe('Test suite for Inverted Index Class', () => {
       expect(InvertedIndexTest.isValid()).toBe(false);
     });
     it('should return false on wrong format', () => {
+      // f is found in test-data.js
       expect(InvertedIndexTest.isValid(f)).toBe(false);
     });
     it('should return false on  invalid arguments', () => {
@@ -49,6 +53,8 @@ describe('Test suite for Inverted Index Class', () => {
 
   describe('Should generate index from data', () => {
     it('should return index from data', () => {
+      // data is found in test-data.js
+      // index is found in test-data.js
       expect(InvertedIndexTest.generateIndex(data)).toEqual(index);
     });
     it('Should return null for undefined and null argument', () => {
@@ -61,17 +67,26 @@ describe('Test suite for Inverted Index Class', () => {
       expect(InvertedIndexTest.generateIndex('edge cases')).toEqual(null);
     });
     it('Should return null for invalid data structure', () => {
+      // fake_data is found in test-data.js
       expect(InvertedIndexTest.generateIndex(fake_data)).toEqual(null);
     });
   });
   describe('Should search for data in a generated index', () => {
     it('should search the generated index', () => {
+      // searchQueries is found in test-data.js
+      // data is found in test-data.js
+      // searchResults is found in test-data.js
       expect(InvertedIndexTest.search(searchQueries[0], InvertedIndexTest.generateIndex(data))).
       toEqual(searchResults[0]);
     });
     it('should search all the generated index', () => {
-      expect(InvertedIndexTest.searchAll('good penny knock', [{ name: 'file1',
-      data: InvertedIndexTest.generateIndex(data) }, { name: 'file2', data: InvertedIndexTest.generateIndex(data) }])).toEqual(search_all);
+      // data is found in test-data.js
+      // searchAll is found in test-data.js
+      expect(InvertedIndexTest.searchAll('good penny knock', [
+        { name: 'file1',
+          data: InvertedIndexTest.generateIndex(data) }, 
+        { name: 'file2', 
+          data: InvertedIndexTest.generateIndex(data) }])).toEqual(searchAll);
     });
   });
 });

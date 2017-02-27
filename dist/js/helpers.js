@@ -31,4 +31,3 @@ function isFound(titles, list) {
   return list.indexOf(titles) !== -1;
 }
 
-//module.exports = { isFound, fetchTitle, sort };
