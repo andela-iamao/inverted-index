@@ -1,0 +1,16 @@
+{
+  "name": "inverted-index",
+  "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location.",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
