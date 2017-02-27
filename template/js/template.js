@@ -27,6 +27,10 @@ function handleClick() {
   $('#view-two').css({ display: 'block' });
 }
 
+
+function openCreateIndex() {
+  $('#current-file').css({ display : 'block' });
+}
 /**
  * It changes the css display of both #search-form and table tag
  * @params {}
