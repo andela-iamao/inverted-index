@@ -27,7 +27,7 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
     $scope.onUpload = () => {
       const files = document.getElementById('files').files;
       const uploaded = [];
-      for (let i = 0; i < files.length; i+=1) {
+      for (let i = 0; i < files.length; i++) {
         uploaded.push({ name: files[i].name, size: `${files[i].size} bytes`, fulldata: files[i] });
       }
       $rootScope.uploaded_files = uploaded;
@@ -47,9 +47,6 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
             $rootScope.data[file[data].name] = response;
             fn('menu view');
           }
-
-          console.log('root scope data', $rootScope.data);
-
         });
       });
     };

@@ -10,11 +10,9 @@ angular.module('fileMenu')
 				self.index = {name: filename, data: this.generateIndex($rootScope.data[filename]), title:this.fetchTitle($rootScope.data[filename]), isFound:this.isFound};
 				$rootScope.index_data = self.index;
 				addIndex(self.index)
-				console.log($rootScope.generatedIndex);
 				$rootScope.$broadcast('setdata');
 			}
-			$rootScope.InvertedIndex = new InvertedIndex();
-			this.InvertedIndex = new InvertedIndex();
+
 			this.isValid = $rootScope.InvertedIndex.isValid;
 			this.generateIndex = $rootScope.InvertedIndex.generateIndex;
       this.fetchTitle = $rootScope.InvertedIndex.fetchTitle;
@@ -39,7 +37,6 @@ angular.module('fileMenu')
       function searchData() {
         self.result = self.InvertedIndex.search($rootScope.query, $rootScope.filename);
         $scope.$apply();
-        console.log(result);
       }
 
 			function isView() {
