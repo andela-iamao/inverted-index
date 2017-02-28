@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
-const browserify = require('gulp-browserify');
 
 
 gulp.task('serve', () => {
