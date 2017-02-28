@@ -17,4 +17,4 @@ gulp.task('runserver', ['serve', 'watch-html', () => {
   gulp.watch('./dist/*.html', ['watch-html']);
   gulp.watch('./dist/**/*.js', ['watch-html']);
   gulp.watch('./dist/css/*.css', ['watch-html']);
-});
+}]);
