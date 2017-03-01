@@ -12,6 +12,10 @@ body {
   padding:15px;
 }
 
+#dropdownMenuButton {
+  width : 100%;
+}
+
 .btn-file {
     position: relative;
     cursor:pointer;
@@ -27,6 +31,11 @@ body {
 .btn-custom-success-large {
   color: #3cd873;
   font-size: 150px;
+}
+
+#current-file {
+  display: none;
+  margin-top: 100px;
 }
 
 .btn-custom-success {

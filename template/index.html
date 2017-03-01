@@ -100,23 +100,19 @@
   <div id='view-two'>
     <div class='row'>
       <div id='div-one' class='col-md-3 row'>
-        <div class='col-md-6'>
-          <span class='text-file-name'>
-            <b>test.json </b>
-          </span>
-        </div>
-        <div class='col-md-6'>
-          <div class="dropdown">
+        <div class='col-md-12'>
+          <div class="dropdown col-md-11">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
+              Select File
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" onclick='openCreateIndex()' href="#">test.json</a>
             </div>
           </div>
-          <button class='btn btn-custom-success' onclick='createIndex()'>Create Index</button>
+          <div id='current-file'>
+              <b><span class='text-file-name'>test.json</span></b>
+              <button style='margin-left:20px;' class='btn btn-secondary btn-custom-success' onclick="createIndex()">Create Index</button>
+          </div>
         </div>
       </div>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">

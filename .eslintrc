@@ -1,10 +1,16 @@
+/* global $ */
 {
   "root": true,
   "extends": "airbnb-base",
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "jquery" : true
+  },
+  "globals" :{
+    "document" : true,
+    "window" : true
   },
   "rules": {
     "one-var": 0,
