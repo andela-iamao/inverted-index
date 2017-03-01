@@ -43,6 +43,10 @@ body {
   cursor : pointer;
 }
 
+.search-div {
+  margin-top: 100px; 
+}
+
 #search-form {
   display: none;
   margin-right: 30px;

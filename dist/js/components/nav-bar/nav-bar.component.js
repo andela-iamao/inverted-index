@@ -9,8 +9,14 @@ angular.module('navBar')
 			this.openModal = (file) => {
 				let query = self.query;
 				console.log("The file is ", self.files)
+                console.log($rootScope.uploaded_files);
 				$rootScope.search_query = {query, file}
-				$rootScope.$broadcast('search');
+                if (file === 'all') {
+                  $rootScope.$broadcast('search all');
+                } else {
+                  $rootScope.$broadcast('search');
+                }
+//				(file === 'all') ? $rootScope.$broadcast('search all') : $rootScope.$broadcast('search');
 				$('#myModal').modal('show');
 			}
 

@@ -15,6 +15,7 @@
             Search
           </button>
           <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" ng-click="navbar.openModal('all')">All Files</a>
             <a class="dropdown-item" ng-repeat="file in navbar.files" href="#" ng-click="navbar.openModal(file.name)">{{file.name}}</a>
           </div>
         </div>
