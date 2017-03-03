@@ -45,6 +45,7 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
             callback();
           } else {
             $rootScope.data[file[data].name] = response;
+            $rootScope.InvertedIndex.generateIndex(file[data].name, response);
             fn('menu view');
           }
         });

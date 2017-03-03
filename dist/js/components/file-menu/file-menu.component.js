@@ -7,31 +7,18 @@ angular.module('fileMenu')
 			$scope.uploads = [];
 			const self = this;
 			this.createIndex = (filename) => {
-				self.index = {name: filename, data: this.generateIndex($rootScope.data[filename]), title:this.fetchTitle($rootScope.data[filename]), isFound:this.isFound};
-				$rootScope.index_data = self.index;
-				addIndex(self.index)
+				self.index = true;
+				$rootScope.index_data = {name: filename, data: $rootScope.InvertedIndex.indices[filename], title:this.fetchTitle($rootScope.data[filename]), isFound:this.isFound};
 				$rootScope.$broadcast('setdata');
 			}
 
-			this.isValid = $rootScope.InvertedIndex.isValid;
-			this.generateIndex = $rootScope.InvertedIndex.generateIndex;
+			//this.isValid = $rootScope.InvertedIndex.isValid;
       this.fetchTitle = $rootScope.InvertedIndex.fetchTitle;
       this.isFound = $rootScope.InvertedIndex.isFound;
 			$rootScope.generatedIndex = {};
 			function render(data, fn) {
 				$scope.uploads = data;
 				fn();
-			}
-
-			function addIndex(index) {
-				const found = $rootScope.generatedIndex.map((data) => {
-					if (index.name === data.name) {
-						return false;
-					}
-				})
-					if (found.indexOf(false) === -1) {
-					$rootScope.generatedIndex.push(index)
-				}
 			}
 
       function searchData() {

@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
-
+const browserify = require('gulp-browserify');
 
 gulp.task('serve', () => {
   browserSync({
@@ -8,6 +8,16 @@ gulp.task('serve', () => {
       baseDir: './dist'
     }
   });
+});
+
+ gulp.task('scripts', function() {
+    // Single entry point to browserify 
+    gulp.src('dist/js/inverted-index.js')
+        .pipe(browserify({
+          insertGlobals : true,
+          debug : !gulp.env.production
+        }))
+        .pipe(gulp.dest('./dist/script/js'))
 });
 
 gulp.task('watch-html', browserSync.reload);
