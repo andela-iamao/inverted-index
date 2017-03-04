@@ -12,7 +12,6 @@ angular.module('fileMenu')
 				$rootScope.$broadcast('setdata');
 			}
 
-			//this.isValid = $rootScope.InvertedIndex.isValid;
       this.fetchTitle = $rootScope.InvertedIndex.fetchTitle;
       this.isFound = $rootScope.InvertedIndex.isFound;
 			$rootScope.generatedIndex = {};
@@ -41,4 +40,5 @@ angular.module('fileMenu')
 			$scope.$on('change view', isView);
 		},
 		controllerAs : 'menu'
-	})
+	});
+	

@@ -43,6 +43,10 @@ body {
   cursor : pointer;
 }
 
+.nav-btn {
+  margin-left: 15px;
+}
+
 .search-div {
   margin-top: 100px; 
 }

@@ -2,27 +2,29 @@
   <div id='view-two' ng-show="menu.show_menu">
     <div class='row'>
       <div id='div-one' class='col-md-3'>
-        <div ng-repeat="file in uploads" >
-          <div class='col-md-8'>
-            <span class='text-file-name'>
-              <b>{{file.name}}</b>
-            </span>
+        <div >
+          <div class='col-md-11'>
+              <span class='text-file-name'>
+                <b>Generate Index: </b>
+              </span>
           </div>
-          <div class='col-md-4'>
-            <button class='btn btn-custom-success' ng-click='menu.createIndex(file.name)'>
-              Create Index
+          <div class="btn-group">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select File
             </button>
-          </div>
-          
+            <div class="dropdown-menu">
+              <button class="dropdown-item form-control" ng-click='menu.createIndex(file.name)' type="button" ng-repeat='file in uploads'>
+                {{file.name}}
+              </button>
+            </div>
+          </div>  
         </div>
         <div ></div>
       </div>
       <search></search>
       <div id='div-two' class='col-md-9'>
         <div ng-show='menu.index'>
-            <index-table>
-
-          </index-table>
+            <index-table></index-table>
         </div>
       </div>
       </div>

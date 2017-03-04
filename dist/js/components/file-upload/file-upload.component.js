@@ -15,33 +15,28 @@ angular.module('fileUpload')
 			$scope.check = (next_view_name) => {
 				let next = true;
 				self.error = [];
-       
-        if ($rootScope.error) {
-          self.error.push({message : $rootScope.error.msg})
-        } else {
-          if ($scope.uploaded_files.length) {
-            $scope.uploaded_files.map((file) => {
-              if (file.name.search(/.json/i) === -1) {
-                next = false;
-                self.error.push({file : file.name, msg: ' is not a valid json file'});
-              }
-            });
-            if (next) {
-              $rootScope.changeInput($scope.uploaded_files, $rootScope.nextView, () => {
-                if ($rootScope.error) {
-                  self.error.push({message : $rootScope.error.message});
-                  $scope.$apply();
-                }
-              });
-              
-           } else {
-              $scope.$apply();
-            }
-          } else {
-            self.error.push({message: 'You must select a json file'});
-            $scope.$apply();
-          }
-        }
+				if ($scope.uploaded_files.length) {
+					$scope.uploaded_files.map((file) => {
+						if (file.name.search(/.json/i) === -1) {
+							next = false;
+							self.error.push({file : file.name, msg: ' is not a valid json file'});
+						}
+					});
+					if (next) {
+						$rootScope.changeInput($scope.uploaded_files, $rootScope.nextView, () => {
+							if ($rootScope.error) {
+								self.error.push({message : $rootScope.error.message});
+								$scope.$apply();
+							}
+						});
+						
+				} else {
+						$scope.$apply();
+					}
+				} else {
+					self.error.push({message: 'You must select a json file'});
+					$scope.$apply();
+				}  
 			}
 	  	
 			function isView() {

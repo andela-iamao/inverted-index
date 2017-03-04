@@ -46,6 +46,13 @@ module.exports = {
     }
   ],
 
+  nullObject: {
+    a: [null],
+    he: [null],
+    look: [null],
+    said: [null]
+  },
+
   index: {
     give: ['A good bot', 'A bad bot'],
     a: ['A good bot', 'A bad bot'],
@@ -137,7 +144,11 @@ module.exports = {
       the: ['A bad bot'],
       bot: ['A good bot', 'A bad bot']
     },
-    null
+    null,
+    {
+      test1: null,
+      'test two': null
+    }
   ]
 };
 

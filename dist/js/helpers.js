@@ -49,14 +49,14 @@ const helpers = {
 
   /**
    * Removes special characters from a string and converts to lowercase
-   * @param   {String} str - contains a string
+   * @param   {String} wholeString - contains a string
    * @returns {String} - a lowercase string without symbols
    */
-  stripStr(str) {
-    if (typeof str !== 'string') {
+  stripStr(wholeString) {
+    if (typeof wholeString !== 'string') {
       return null;
     }
-    return str.replace(/[^a-zA-Z ]/g, '').toLowerCase();
+    return wholeString.replace(/[^a-zA-Z ]/g, '').toLowerCase();
   }
 };
 

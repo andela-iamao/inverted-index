@@ -7,18 +7,17 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
         const reader = new FileReader();
         let data = [];
 
-        reader.onload = (() => {
-          return (event) => {
-            try {
-              const jsonData = JSON.parse(event.target.result);
-              if (jsonData) {
-                data = jsonData;
-                resolve(data);
-              }
-            } catch (error) {
-              resolve(false);
+        reader.onload = (() => (event) => {
+          try {
+            const jsonData = JSON.parse(event.target.result);
+            if (jsonData) {
+              data = jsonData;
+              resolve(data);
             }
-          };
+          } catch (error) {
+            $rootScope.error = { message: 'Invalid JSON File' };
+            resolve(false);
+          }
         })(file);
         reader.readAsText(file);
       });
@@ -38,18 +37,26 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
 
     $rootScope.changeInput = (file, fn, callback) => {
       $rootScope.data = {};
-      Object.keys(file).forEach((data) => {
-        readFile(file[data].fulldata).then((response) => {
-          if (!response) {
-            $rootScope.error = { message: 'Invalid JSON File' };
+      try {
+        Object.keys(file).forEach((data) => {
+          if ($rootScope.error) {
             callback();
           } else {
-            $rootScope.data[file[data].name] = response;
-            $rootScope.InvertedIndex.generateIndex(file[data].name, response);
-            fn('menu view');
+          readFile(file[data].fulldata).then((response) => {
+            if (response === false) {
+              throw TypeError;
+            } else {
+              $rootScope.data[file[data].name] = response;
+              $rootScope.InvertedIndex.generateIndex(file[data].name, response);
+              fn('menu view');
+            }
+          });
           }
         });
-      });
+      } catch (error) {
+        $rootScope.error = { message: 'Invalid JSON File' };
+        callback();
+      }
     };
 
     $rootScope.nextView = (view) => {
