@@ -1,0 +1,9 @@
+dist/lib/**/*.js
+dist/js/components/**/*.js
+template/js/template.js
+dist/lib/**/*.js
+dist/js/angular-mocks.js
+server.js
+gulpfile.js
+karma.conf.js
+webpack.conf.js
