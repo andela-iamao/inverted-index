@@ -1,8 +1,6 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
-const browserify = require('gulp-browserify');
 const webpack = require('gulp-webpack');
-const webpack_conf = require('./webpack.config.js');
 const Server = require('karma').Server;
 
 gulp.task('serve', () => {
