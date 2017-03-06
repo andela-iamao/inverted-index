@@ -45,7 +45,7 @@ angular.module('fileUpload')
 				} else {
 					$scope.show = false;
 				}
-				$scope.$apply();
+				//$scope.$apply();
 	  	}
 
 	  	$scope.$on('files uploaded', fileDetails);

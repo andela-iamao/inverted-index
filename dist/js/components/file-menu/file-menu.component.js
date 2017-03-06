@@ -27,7 +27,6 @@ angular.module('fileMenu')
       function isView() {
         render($rootScope.uploaded_files, () => {
           if ($rootScope.view === 'menu view') {
-						$scope.showBack = true;
             self.show_menu = true;
           } else {
             self.show_menu = false;

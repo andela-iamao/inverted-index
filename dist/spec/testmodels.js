@@ -2,7 +2,7 @@ class FakeInvertedIndex {
 
 }
 
-module.exports = {
+const model = {
 
   orderedObject: {
     a: '',
@@ -126,8 +126,6 @@ module.exports = {
     }
   ],
 
-  searchQueries: ['bad good bot knock'],
-
   searchResults: [
     {
       bad: ['A bad bot'],
@@ -148,7 +146,30 @@ module.exports = {
     {
       test1: null,
       'test two': null
+    },
+    {
+      test1: {
+        tomorrow: [null],
+        helps: [null],
+        devil: [null],
+        a: ['A good bot', 'A bad bot'],
+        the: ['A bad bot'],
+        give: ['A good bot', 'A bad bot'],
+        bot: ['A good bot', 'A bad bot'],
+        knock: ['A bad bot']
+      },
+      'test two': {
+        a: [null],
+        give: [null],
+        bot: [null],
+        knock: [null],
+        tomorrow: ['Gone With The Wind'],
+        helps: ['Crime and Punishment'],
+        the: ['Crime and Punishment'],
+        devil: ['Crime and Punishment'],
+      }
     }
   ]
 };
 
+module.exports = model;

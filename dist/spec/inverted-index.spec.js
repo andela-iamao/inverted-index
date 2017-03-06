@@ -1,9 +1,9 @@
+const helpers = require('../js/helpers');
 const InvertedIndex = require('../js/inverted-index');
 const model = require('./testmodels');
-const helpers = require('../js/helpers');
-
 
 describe('Test suite for helper functions', () => {
+
   it('Should sort an unsorted object alphabetically', () => {
     const sortedObject = helpers.sort(model.unorderedObject);
     expect(Object.keys(sortedObject))
@@ -41,6 +41,8 @@ describe('Test suite for helper functions', () => {
 
 describe('Test suite for Inverted Index Class', () => {
   const InvertedIndexTest = new InvertedIndex();
+
+   console.log('Indices are', InvertedIndexTest.indices);
 
   describe('Should test for the instance of InvertedIndexTest', () => {
     it('Should return true if InvertedIndexTest is an instance of Object', () => {
@@ -130,7 +132,7 @@ describe('Test suite for Inverted Index Class', () => {
 
   describe('Should search for data in a generated index', () => {
     it('should search the generated index', () => {
-      expect(InvertedIndexTest.search(model.searchQueries[0], 'test1'))
+      expect(InvertedIndexTest.search('bad good bot knock', 'test1'))
       .toEqual(model.searchResults[0]);
     });
 
@@ -146,7 +148,7 @@ describe('Test suite for Inverted Index Class', () => {
       InvertedIndexTest.generateIndex('test two', model.validJsonTestDataTwo);
       expect(InvertedIndexTest
       .searchAll('tomorrow helps the devil give a bot a knock'))
-      .toEqual(model.search_all_result);
+      .toEqual(model.searchResults[4]);
     });
 
     it('should search all the generated index', () => {

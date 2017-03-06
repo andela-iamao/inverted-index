@@ -15,15 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'spec/testdata/test-data.js',
-      'js/helpers.js',
-      'js/inverted-index.js',
-      'spec/inverted-index.spec.js'
+      'build/inverted-index.spec.js'
     ],
 
     plugins: [
       'karma-chrome-launcher',
-      'karma-firefox-launcher',
       'karma-coverage',
       'karma-jasmine'
     ],
@@ -71,7 +67,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
 
     customLaunchers: {  
       Chrome_travis_ci: {
