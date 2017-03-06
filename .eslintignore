@@ -6,3 +6,4 @@ dist/js/angular-mocks.js
 server.js
 gulpfile.js
 karma.conf.js
+webpack.conf.js
