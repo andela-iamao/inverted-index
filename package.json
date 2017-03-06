@@ -4,7 +4,7 @@
   "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file)",
   "main": "index.js",
   "scripts": {
-    "start": "gulp runserver",
+    "start": "gulp start",
     "test": "gulp runtests"
   },
   "repository": {
@@ -53,6 +53,7 @@
     "eslint-plugin-import": "^2.2.0",
     "express": "^4.14.1",
     "gulp": "^3.9.1",
+    "gulp-express": "^0.3.5",
     "gulp-webpack": "^1.5.0",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",

@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const webpack = require('gulp-webpack');
 const Server = require('karma').Server;
+const expressServer = require('gulp-express');
 
 gulp.task('serve', () => {
   browserSync({
@@ -9,6 +10,10 @@ gulp.task('serve', () => {
       baseDir: './dist'
     }
   });
+});
+
+gulp.task('start', ['webpack'], () => {
+  expressServer.run(['server.js']);
 });
 
 gulp.task('webpack', function() {
