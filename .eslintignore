@@ -1,4 +1,5 @@
 dist/lib/**/*.js
+dist/js/app.module.js
 dist/js/components/**/*.js
 template/js/template.js
 dist/lib/**/*.js
