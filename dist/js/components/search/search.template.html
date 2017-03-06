@@ -15,7 +15,7 @@
               <th ng-repeat='title in search.titles'>{{title}}</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody ng-show="search.data">
             <tr ng-repeat='(key, value) in search.data'>
               <th scope='row'>{{key}}</th>
               <td ng-repeat="title in search.titles track by $index">
@@ -29,7 +29,7 @@
       </div>
       <div class="modal-body" ng-show='search.all' >
         <div ng-repeat="(key, value) in search.all_search" class='search-div'>
-        <h3>Search results for '{{search.query}}' in {{key}}</h3>
+        <h6>Search results for '{{search.query}}' in {{key}}</h6>
         <table class='table table-striped'>
           <thead>
             <tr>
@@ -48,11 +48,14 @@
                </td>
             </tr>
           </tbody>
+          <tbody ng-hide="search.data">
+              No results found
+          </tbody>
         </table>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

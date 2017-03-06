@@ -9,23 +9,29 @@ describe('Test suite for helper functions', () => {
     expect(Object.keys(sortedObject))
     .toEqual(Object.keys(model.orderedObject));
   });
+
   it('Should return an array of titles when given a json', () => {
     expect(helpers.fetchTitle(model.validJsonTestData)).toEqual(['A good bot', 'A bad bot']);
   });
+
   it('Should return true if every key in object contains array with null value', () => {
     expect(helpers.allIsNull(model.nullObject)).toEqual(true);
   });
+
   it('Should return true if a title was found in an array of titles', () => {
     expect(helpers.isFound('A good bot', ['A good bot', 'A bad bot'])).toEqual(true);
   });
+
   it('Should return true if a title was found in an array of titles', () => {
     expect(helpers.isFound('A red bot', ['A good bot', 'A bad bot'])).toEqual(false);
   });
+
   it('Should return a lowercase string without any symbols', () => {
     expect(helpers
     .stripStr('"#NothIng liKe breaKing lIke glAss!", wrote the blonde girl'))
     .toEqual('nothing like breaking like glass wrote the blonde girl');
   });
+
   it('Should return null when matching symbols when string has been striped', () => {
     expect(helpers
     .stripStr('"#NothIng liKe breaKing lIke glAss!", wrote the blonde girl').match(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/))

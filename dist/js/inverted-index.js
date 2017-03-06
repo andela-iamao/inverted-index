@@ -84,6 +84,7 @@ class InvertedIndex {
         result[word] = [null];
       }
     });
+    console.log(helpers.allIsNull(result));
     return helpers.allIsNull(result) ? null : result;
   }
 

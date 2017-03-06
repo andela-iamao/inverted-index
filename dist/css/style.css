@@ -46,7 +46,11 @@ body {
 .nav-btn {
   margin-left: 15px;
 }
-
+.back-btn {
+  margin:0;
+  margin-right: 15px;
+  font-size: 25px;
+}
 .search-div {
   margin-top: 100px; 
 }
@@ -116,6 +120,3 @@ body {
 section {
   display: block;
 }
-/*table {
-  display: none;
-}*/
