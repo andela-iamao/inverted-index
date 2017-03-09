@@ -1,9 +1,9 @@
-angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search']).
-  controller('UploadController', ['$rootScope', '$scope', ($rootScope, $scope) => {
+angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search'])
+  .controller('UploadController', ['$rootScope', '$scope', ($rootScope, $scope) => {
     $rootScope.generatedIndex = [];
 
     const readFile = (file) => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         const reader = new FileReader();
         let data = [];
 
@@ -27,7 +27,7 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
       $rootScope.error = null;
       const files = document.getElementById('files').files;
       const uploaded = [];
-      for (let i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i += 1) {
         uploaded.push({ name: files[i].name, size: `${files[i].size} bytes`, fulldata: files[i] });
       }
       $rootScope.uploaded_files = uploaded;
@@ -38,10 +38,10 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
 
     $rootScope.changeInput = (file, fn, callback) => {
       $rootScope.data = {};
-        Object.keys(file).forEach((data) => {
-          if ($rootScope.error) {
-            callback();
-          } else {
+      Object.keys(file).forEach((data) => {
+        if ($rootScope.error) {
+          callback();
+        } else {
           readFile(file[data].fulldata).then((response) => {
             try {
               if ($rootScope.error) {
@@ -52,11 +52,13 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
                 fn('menu view');
               }
             } catch (error) {
-              (!response) ? callback() : '';
+              if (!response) {
+                callback();
+              }
             }
           });
-          }
-        });
+        }
+      });
     };
 
     $rootScope.nextView = (view) => {

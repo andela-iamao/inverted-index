@@ -4,7 +4,7 @@ angular.module('navBar')
     controller: function navBarController($scope, $rootScope) {
       const self = this;
       this.showSearch = false;
-      this.files;
+      this.files = [];
       this.query = '';
       this.openModal = (file) => {
         const query = self.query;
