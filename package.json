@@ -4,7 +4,8 @@
   "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp start",
+    "test": "gulp runtests"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,50 @@
   },
   "homepage": "https://github.com/andela-iamao/inverted-index#readme",
   "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-compile": "^2.0.0",
     "browser-sync": "^2.18.7",
+    "browserify": "^14.1.0",
+    "coveralls": "^2.11.16",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
-    "jasmine": "^2.5.3"
+    "gulp-browserify": "^0.5.1",
+    "gulp-webpack": "^1.5.0",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "watchify": "^3.9.0",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.7",
+    "browserify": "^14.1.0",
+    "coveralls": "^2.11.16",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "express": "^4.14.1",
+    "gulp": "^3.9.1",
+    "gulp-express": "^0.3.5",
+    "gulp-webpack": "^1.5.0",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "watchify": "^3.9.0",
+    "webpack": "^2.2.1"
   }
 }
