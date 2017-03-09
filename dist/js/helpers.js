@@ -2,7 +2,7 @@ const helpers = {
   /**
    * Sort an object alphabetically
    * @param {Object} data - an unsorted Object
-   * @returns {Object} sorted - sorted object
+   * @returns {Object} - sorted object
    */
   sort(data) {
     const sorted = {};
@@ -26,7 +26,7 @@ const helpers = {
    * @param {Object} data - Object containing generated indices
    * @returns {Boolean} - true if the vaulues of all keys are null
    */
-  allIsNull(data) {
+  allIsEmpty(data) {
     const dataLen = Object.keys(data).length;
     let nullValue = 0;
     Object.keys(data).forEach((i) => {
@@ -35,6 +35,26 @@ const helpers = {
       }
     });
     return nullValue === dataLen;
+  },
+
+  /**
+   * Checks if file is a valid json file
+   * @param   {Array} data - file in which to determine validity
+   * @returns {Boolean} - true if file is valid and false if otherwise
+   */
+  isValid(data) {
+    if (!data || !Array.isArray(data) || data.length < 1) {
+      return false;
+    }
+    const valid = data.map((book) => {
+      if (!book.title || !book.text) {
+        return false;
+      } else if (typeof book.title === 'string'
+      && typeof book.text === 'string') {
+        return true;
+      }
+    });
+    return valid.indexOf(false) === -1;
   },
 
   /**

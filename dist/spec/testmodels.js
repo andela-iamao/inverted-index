@@ -25,33 +25,23 @@ const model = {
   },
 
   validJsonTestData: [
-    {
+    [{
       title: 'A good bot',
       text: 'Give a good bot a penny a day'
     },
     {
       title: 'A bad bot',
       text: 'Give a bad bot a knock on the head'
-    }
-  ],
-
-  validJsonTestDataTwo: [
-    {
+    }],
+    [{
       title: 'Gone With The Wind',
       text: 'After all, tomorrow is another day.'
     },
     {
       title: 'Crime and Punishment',
       text: 'When reason fails, the devil helps.'
-    }
+    }]
   ],
-
-  nullObject: {
-    a: [null],
-    he: [null],
-    look: [null],
-    said: [null]
-  },
 
   index: {
     give: ['A good bot', 'A bad bot'],
@@ -68,7 +58,7 @@ const model = {
   },
 
   indices: {
-    test1: {
+    book1: {
       give: ['A good bot', 'A bad bot'],
       a: ['A good bot', 'A bad bot'],
       good: ['A good bot'],
@@ -83,47 +73,25 @@ const model = {
     }
   },
 
-  fake_data: [
-    {
-      title: 'A good bot',
-      tex: 'Give a good bot a penny a day'
-    }
-  ],
-
-  search_all_result: {
-    test1: {
-      tomorrow: [null],
-      helps: [null],
-      devil: [null],
-      a: ['A good bot', 'A bad bot'],
-      the: ['A bad bot'],
-      give: ['A good bot', 'A bad bot'],
-      bot: ['A good bot', 'A bad bot'],
-      knock: ['A bad bot']
-    },
-    'test two': {
-      a: [null],
-      give: [null],
-      bot: [null],
-      knock: [null],
-      tomorrow: ['Gone With The Wind'],
-      helps: ['Crime and Punishment'],
-      the: ['Crime and Punishment'],
-      devil: ['Crime and Punishment'],
-    }
-  },
-
   FakeInvertedIndex,
 
   invalidData: [
-    {
-      name: 'Alice',
-      fame: 'Alice falls into a rabbit hole and enters a world full of imagination.'
-    },
-    {
-      name: 'The Lord',
-      fame: 'An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring.'
-    }
+    [
+      {
+        name: 'Alice',
+        fame: 'Alice falls into a rabbit hole and enters a world full of imagination.'
+      },
+      {
+        name: 'The Lord',
+        fame: 'An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring.'
+      }
+    ],
+    [
+      {
+        title: 'A good bot',
+        tex: 'Give a good bot a penny a day'
+      }
+    ]
   ],
 
   searchResults: [
@@ -144,11 +112,11 @@ const model = {
     },
     null,
     {
-      test1: null,
-      'test two': null
+      book1: null,
+      book2: null
     },
     {
-      test1: {
+      book1: {
         tomorrow: [null],
         helps: [null],
         devil: [null],
@@ -158,7 +126,7 @@ const model = {
         bot: ['A good bot', 'A bad bot'],
         knock: ['A bad bot']
       },
-      'test two': {
+      book2: {
         a: [null],
         give: [null],
         bot: [null],
@@ -168,6 +136,12 @@ const model = {
         the: ['Crime and Punishment'],
         devil: ['Crime and Punishment'],
       }
+    },
+    {
+      a: [null],
+      he: [null],
+      look: [null],
+      said: [null]
     }
   ]
 };

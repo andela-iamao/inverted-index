@@ -16,45 +16,25 @@ class InvertedIndex {
   }
 
   /**
-   * Checks if file is a valid json file
-   * @param   {Array} data - file in which to determine validity
-   * @returns {Boolean} - true if file is valid and false if otherwise
-   */
-  isValid(data) {
-    if (!data || !Array.isArray(data) || data.length < 1) {
-      return false;
-    }
-    const valid = data.map((book) => {
-      if (!book.title || !book.text) {
-        return false;
-      } else if (typeof book.title === 'string'
-                 && typeof book.text === 'string') {
-        return true;
-      }
-    });
-    return valid.indexOf(false) === -1;
-  }
-
-  /**
    * Generates index for a valid json file
    * @param {String} fileName - A string for name of file to be indexed
-   * @param   {Array} data - an Array of objects to be indexed
+   * @param   {Array} fileContents - an Array of objects to be indexed
    * @returns {Object} in key value pair where each word is key
    * and value is an  array of titles
    */
-  generateIndex(fileName, data) {
-    if (!this.isValid(data)) {
+  generateIndex(fileName, fileContents) {
+    if (!helpers.isValid(fileContents)) {
       return null;
     }
     const index = {};
-    data.forEach((book) => {
+    fileContents.forEach((book) => {
       const text = helpers.stripStr(book.text).split(' ');
       text.forEach((word) => {
         if (index[word]) {
-          const wordArray = index[word];
-          if (wordArray.indexOf(book.title) === -1) {
-            wordArray.push(book.title);
-            index[word] = wordArray;
+          const wordList = index[word];
+          if (wordList.indexOf(book.title) === -1) {
+            wordList.push(book.title);
+            index[word] = wordList;
           }
         } else if (word !== '') {
           index[word] = [book.title];
@@ -69,31 +49,32 @@ class InvertedIndex {
   /**
    * Searches for a keyword or phrase within a generated index
    * @param   {String} query - word or phrase to search for
-   * @param   {Object} filename - generated index to search in
-   * @returns {Object} result - in key value pair where each word in the query is key
-   * and value is an  array of titles
+   * @param   {Object} fileName - generated index to search in
+   * @returns {Object} result - in key value pair where each word
+   * in the query is key and value is an  array of titles
    */
-  search(query, filename) {
-    const words = Object.keys(this.indices[filename]);
-    const queryArray = helpers.stripStr(query).split(' ');
+  search(query, fileName) {
+    const words = Object.keys(this.indices[fileName]);
+    const queryList = helpers.stripStr(query).split(' ');
     const result = {};
-    queryArray.forEach((word) => {
+    queryList.forEach((word) => {
       if (words.indexOf(word) !== -1 && word !== ' ') {
-        result[word] = this.indices[filename][word];
-      } else if (words.indexOf(word) === -1 && word !== '') {    
+        result[word] = this.indices[fileName][word];
+      } else if (words.indexOf(word) === -1 && word !== '') {
         result[word] = [null];
       }
     });
-    console.log(helpers.allIsNull(result));
-    return helpers.allIsNull(result) ? null : result;
+    return helpers.allIsEmpty(result) ? null : result;
   }
 
-
   /**
-   * Searches for a keyword or phrase within multiple generated indices
+   * Searches for a keyword or phrase within multiple generated
+   * indices
    * @param   {String} query - word or phrase to search for
-   * @param   {Array} dataset - Array containing all generated index in which to search in
-   * @returns {Object} searchResults - Object containing mapping of file name to the search
+   * @param   {Array} dataset - Array containing all generated index
+   * in which to search in
+   * @returns {Object} searchResults - Object containing mapping of
+   * file name to the search
    * result in each file
    */
   searchAll(query) {

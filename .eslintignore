@@ -2,7 +2,8 @@ dist/lib/**/*.js
 dist/spec/*.js
 dist/build/*.js
 dist/spec/**/*.js
-dist/js/app.module.js
+dist/app.module.js
+dist/js/app.js
 dist/js/components/**/*.js
 template/js/template.js
 dist/lib/**/*.js
