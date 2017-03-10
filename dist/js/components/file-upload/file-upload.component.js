@@ -53,6 +53,12 @@ angular.module('fileUpload')
         }
       }
 
+
+      $scope.$on('process', () => {
+        self.error = null;
+        $scope.processing = true;
+        $scope.$apply();
+      });
       $scope.$on('files uploaded', fileDetails);
       $scope.$on('change view', isView);
     },

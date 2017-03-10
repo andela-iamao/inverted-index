@@ -16,6 +16,9 @@
             <span ng-if="dataset.isFound(title, value)">
               <span class='text-check fa fa-check'></span>
             </span>
+            <span ng-if="!dataset.isFound(title, value)">
+              <span class='text-close fa fa-close'></span>
+            </span>
           </td>
         </tr>
         

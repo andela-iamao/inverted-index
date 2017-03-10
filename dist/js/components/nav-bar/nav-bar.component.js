@@ -8,6 +8,9 @@ angular.module('navBar')
       this.query = '';
       this.openModal = (file) => {
         const query = self.query;
+        if (query === '') {
+          return null;
+        }
         $rootScope.search_query = { query, file };
         (file === 'all') ? $rootScope.$broadcast('search all') : $rootScope.$broadcast('search');
         if (query.length === 0) {
