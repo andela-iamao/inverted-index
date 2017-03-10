@@ -14,9 +14,9 @@ ratings:
   - "dist/**/*.js"
 
 exclude_paths:
-  - "dist/coverage/**/*.js"
-  - "dist/build/*.js"
-  - "dist/lib/*.js"
-  - "dist/components/**/*spec.js"
-  - "dist/spec/*.js"
+  - "dist/coverage/"
+  - "dist/build/"
+  - "dist/lib/"
+  - "dist/components/"
+  - "dist/spec/"
 
