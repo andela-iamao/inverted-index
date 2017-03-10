@@ -17,6 +17,6 @@ exclude_paths:
   - "dist/coverage/"
   - "dist/build/"
   - "dist/lib/"
-  - "dist/components/"
+  - "dist/js/components/"
   - "dist/spec/"
 
