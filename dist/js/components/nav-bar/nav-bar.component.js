@@ -4,10 +4,13 @@ angular.module('navBar')
     controller: function navBarController($scope, $rootScope) {
       const self = this;
       this.showSearch = false;
-      this.files;
+      this.files = [];
       this.query = '';
       this.openModal = (file) => {
         const query = self.query;
+        if (query === '') {
+          return null;
+        }
         $rootScope.search_query = { query, file };
         (file === 'all') ? $rootScope.$broadcast('search all') : $rootScope.$broadcast('search');
         if (query.length === 0) {

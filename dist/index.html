@@ -6,8 +6,6 @@
     <link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css' type='text/css' />
     <link rel='stylesheet' href='lib/font-awesome/css/font-awesome.min.css' type="text/css" />
     <link rel='stylesheet' href='css/style.css' type='text/css' />
-    <!-- <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'></script>
-    <script src='app.module.js' text='text/javascript'></script> -->
 </head>
 <body ng-controller="UploadController">
   <nav-bar></nav-bar>
@@ -44,27 +42,62 @@
       </div>
     </div>  
   </div>
-    <file-upload></file-upload>
-    <file-menu></file-menu>
+  <div class="modal fade" id="how-to-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >How To Use</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <section>
+            <article>
+              <p>
+                <strong>Step 1:</strong> Click on the file icon to select a single file or multiple files.
+              </p>
+              <p>
+                <strong>Step 2:</strong> Click the upload button to upload your files or files.
+              </p>
+              <p>
+                <strong>Step 3:</strong> Select from the dropdown button on the right pane of the page, 
+                the file you want to generate index for
+              </p>
+              <p>
+                <strong>Step 4:</strong> To search you will have to type something in the search bar, and
+                 from the drop down, you can choose to search for your query in all the files you uploaded 
+                or in a single file.
+              </p>
+            </article>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <file-upload></file-upload>
+  <file-menu></file-menu>
 
-    <script src='lib/jquery/jquery-3.1.1.min.js'></script>
-    <script src='lib/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
-    
-    <script src='lib/angular/angular.js'></script>
-    <!--<script src='script/js/inverted-index.js'></script>-->
-    <script src='build/inverted-index.build.js'></script>
-    <script src='app.module.js'></script>
-    <script src='js/components/nav-bar/nav-bar.module.js'></script>
-    <script src='js/components/nav-bar/nav-bar.component.js'></script>
-    <script src='js/components/index-table/index-table.module.js'></script>
-    <script src='js/components/index-table/index-table.component.js'></script>
-    <script src='js/components/file-upload/file-upload.module.js'></script>
-    <script src='js/components/file-upload/file-upload.component.js'></script>
-    <script src='js/components/file-menu/file-menu.module.js'></script>
-    <script src='js/components/file-menu/file-menu.component.js'></script>
-    <script src='js/components/search/search.module.js'></script>
-    <script src='js/components/search/search.component.js'></script>
-    <script src='js/app.js'></script>
+  <script src='lib/jquery/jquery-3.1.1.min.js'></script>
+  <script src='lib/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+  
+  <script src='lib/angular/angular.js'></script>
+  <script src='build/inverted-index.build.js'></script>
+  <script src='app.module.js'></script>
+  <script src='js/components/nav-bar/nav-bar.module.js'></script>
+  <script src='js/components/nav-bar/nav-bar.component.js'></script>
+  <script src='js/components/index-table/index-table.module.js'></script>
+  <script src='js/components/index-table/index-table.component.js'></script>
+  <script src='js/components/file-upload/file-upload.module.js'></script>
+  <script src='js/components/file-upload/file-upload.component.js'></script>
+  <script src='js/components/file-menu/file-menu.module.js'></script>
+  <script src='js/components/file-menu/file-menu.component.js'></script>
+  <script src='js/components/search/search.module.js'></script>
+  <script src='js/components/search/search.component.js'></script>
+  <script src='js/app.js'></script>
     
 </body>
 </html>

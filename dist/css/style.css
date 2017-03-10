@@ -120,3 +120,6 @@ body {
 section {
   display: block;
 }
+.text-close {
+  color:red;
+}

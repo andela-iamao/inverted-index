@@ -1,8 +1,12 @@
 /**
- * It changes opens the #myModal modal
+ * It opens the #aboutModal div
  * @params {}
- * @returns {} #aboutModal div opens
+ * @returns {any} #aboutModal div opens
  */
 function openAbout() {
   $('#aboutModal').modal('show');
+}
+
+function openHowTo() {
+  $('#how-to-modal').modal('show');
 }
