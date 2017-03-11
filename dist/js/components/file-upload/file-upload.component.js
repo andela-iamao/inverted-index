@@ -47,6 +47,7 @@ angular.module('fileUpload')
 
       function isView() {
         if ($rootScope.view === 'upload view') {
+           $scope.processing = false;
           $scope.show = true;
         } else {
           $scope.show = false;

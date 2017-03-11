@@ -20,13 +20,21 @@ angular.module('navBar')
         }
       };
 
+      this.goBack = () => {
+        $rootScope.view = 'upload view';
+        $rootScope.$broadcast('change view');
+      }
+
       function isView() {
         if ($rootScope.view !== 'upload view') {
           self.showSearch = true;
           self.showBack = true;
           self.files = $rootScope.uploaded_files;
+          $scope.$apply();
+        } else {
+          self.showSearch = false;
+          self.showBack = false;
         }
-        $scope.$apply();
       }
       $scope.$on('change view', isView);
     },

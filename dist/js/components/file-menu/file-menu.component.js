@@ -28,10 +28,10 @@ angular.module('fileMenu')
         render($rootScope.uploaded_files, () => {
           if ($rootScope.view === 'menu view') {
             self.show_menu = true;
+            $scope.$apply();
           } else {
             self.show_menu = false;
           }
-          $scope.$apply();
         });
       }
 
