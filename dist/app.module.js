@@ -1,6 +1,6 @@
 angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar', 'search'])
   .controller('UploadController', ['$rootScope', '$scope', ($rootScope, $scope) => {
-    $rootScope.generatedIndex = [];
+    $rootScope.InvertedIndex = new InvertedIndex();
 
     const readFile = (file) => {
       return new Promise((resolve) => {
@@ -26,15 +26,17 @@ angular.module('invertedIndex', ['indexTable', 'fileUpload', 'fileMenu', 'navBar
     $scope.onUpload = () => {
       $rootScope.error = null;
       const files = document.getElementById('files').files;
-      const uploaded = [];
-      for (let i = 0; i < files.length; i += 1) {
-        uploaded.push({ name: files[i].name, size: `${files[i].size} bytes`, fulldata: files[i] });
-      }
+      console.log(files);
+      const uploaded = Object.keys(files).map((file) => {
+        console.log(typeof file);
+        return {name: files[file].name, size: `${files[file].size} bytes`, fulldata: files[file]}
+      });
+      // for (let i = 0; i < files.length; i += 1) {
+      //   uploaded.push({ name: files[i].name, size: `${files[i].size} bytes`, fulldata: files[i] });
+      // }
       $rootScope.uploaded_files = uploaded;
       $rootScope.$broadcast('files uploaded');
     };
-
-    $rootScope.InvertedIndex = new InvertedIndex();
 
     $rootScope.changeInput = (file, fn, callback) => {
       $rootScope.data = {};

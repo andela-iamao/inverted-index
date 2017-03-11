@@ -6,16 +6,7 @@ angular.module('search')
       this.query = '';
       this.filename = '';
 
-      function showSearch() {
-        self.all = false;
-        self.query = $rootScope.search_query.query;
-        self.filename = $rootScope.search_query.file;
-        self.isFound = $rootScope.InvertedIndex.isFound;
-        self.titles = $rootScope.InvertedIndex.fetchTitle($rootScope.data[self.filename]);
-        self.data = $rootScope.InvertedIndex.search(self.query, self.filename);
-      }
-
-      function showAllResult() {
+      $scope.$on('search all', () => {
         self.all = true;
         self.titles_all = {};
         $rootScope.uploaded_files.forEach((data) => {
@@ -24,12 +15,21 @@ angular.module('search')
         });
         self.isFound = $rootScope.InvertedIndex.isFound;
         self.query = $rootScope.search_query.query;
-        self.filename = $rootScope.search_query.file;
-        self.all_search = $rootScope.InvertedIndex.searchAll(self.query);
-      }
+        self.filename = $rootScope.search_query.filename;
+        self.all_search = $rootScope.InvertedIndex
+        .searchAll(self.query);
+      });
 
-      $scope.$on('search all', showAllResult);
-      $scope.$on('search', showSearch);
+      $scope.$on('search', () => {
+        self.all = false;
+        self.query = $rootScope.search_query.query;
+        self.filename = $rootScope.search_query.filename;
+        self.isFound = $rootScope.InvertedIndex.isFound;
+        self.titles = $rootScope.InvertedIndex
+        .fetchTitle($rootScope.data[self.filename]);
+        self.data = $rootScope.InvertedIndex
+        .search(self.query, self.filename);
+      });
     },
     controllerAs: 'search'
   });
