@@ -22,6 +22,9 @@
                 <span ng-if="search.isFound(title, value)">
                  <span class='text-check fa fa-check'></span>
                 </span>
+                <span ng-if="!search.isFound(title, value)">
+                  <span class='text-close fa fa-close'></span>
+                </span>
                </td>
             </tr>
           </tbody>
@@ -44,6 +47,9 @@
               <td ng-repeat="title in search.titles_all[key] track by $index">
                 <span ng-if="search.isFound(title, titles)">
                  <span class='text-check fa fa-check'></span>
+                </span>
+                <span ng-if="!search.isFound(title, titles)">
+                  <span class='text-close fa fa-close'></span>
                 </span>
                </td>
             </tr>

@@ -35,8 +35,12 @@
       </div>
     </div>
     <div class='col-md-12 d-flex justify-content-center'>
-      <button id='upload-btn' onclick="angular.element(this).scope().check('menu view')" class='btn btn-custom-success'>Upload</button>
+      <button ng-hide="processing" id='upload-btn' onclick="angular.element(this).scope().check('menu view')" class='btn btn-custom-success'>Upload</button>
       <!--<button id='upload-btn' onclick="angular.element(this).scope().onUpload()" class='btn btn-custom-success'>Upload</button>-->
-    <span ng-show="processing">Processsing data</span>
+    <br />
+    <button ng-show="processing" disable id='upload-btn' class='btn btn-custom-success'>
+      Uploading... 
+      <span class="fa fa-spinner faa-spin animated"></span>  
+    </button>
     </div>
   </div>

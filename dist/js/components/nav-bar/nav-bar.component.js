@@ -6,29 +6,39 @@ angular.module('navBar')
       this.showSearch = false;
       this.files = [];
       this.query = '';
-      this.openModal = (file) => {
+      /**
+       * Pass user's query and file name to $rootScope.search_query,
+       * broadcast appropriate message and open search modal
+       * 
+       * @param {String} filename
+       * @returns 
+       */
+      this.openModal = (filename) => {
         const query = self.query;
         if (query === '') {
           return null;
         }
-        $rootScope.search_query = { query, file };
-        (file === 'all') ? $rootScope.$broadcast('search all') : $rootScope.$broadcast('search');
-        if (query.length === 0) {
-          self.error = { message: 'Your search was empty' };
-        } else {
-          $('#myModal').modal('show');
-        }
+        $rootScope.search_query = { query, filename };
+        (filename === 'all') ? $rootScope.$broadcast('search all') : $rootScope.$broadcast('search');
+        $('#myModal').modal('show');
       };
 
-      function isView() {
+      this.goBack = () => {
+        $rootScope.view = 'upload view';
+        $rootScope.$broadcast('change view');
+      }
+
+      $scope.$on('change view', () => {
         if ($rootScope.view !== 'upload view') {
           self.showSearch = true;
           self.showBack = true;
           self.files = $rootScope.uploaded_files;
+          $scope.$apply();
+        } else {
+          self.showSearch = false;
+          self.showBack = false;
         }
-        $scope.$apply();
-      }
-      $scope.$on('change view', isView);
+      });
     },
     controllerAs: 'navbar'
   });

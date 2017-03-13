@@ -2,7 +2,10 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Inverted Index</a>
+  <button ng-show="navbar.showBack" class="back-btn btn nav-btn btn-outline-primary my-2 my-sm-0" ng-click="navbar.goBack()">
+    <span class="fa fa-arrow-left faa-passing-reverse animated faa-fast"></span>
+  </button>
+  <a class="navbar-brand navbar-title" >Inverted Index</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">

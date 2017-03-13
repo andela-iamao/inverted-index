@@ -4,14 +4,15 @@ angular.module('fileUpload')
     controller: function fileUploadController($rootScope, $scope) {
       $scope.uploaded_files = [];
 
-      function fileDetails() {
-        $scope.uploaded_files = $rootScope.uploaded_files;
-        $scope.$apply();
-      }
-
       $scope.show = true;
       const self = this;
 
+      /**
+       * check if file is a valid json file
+       * 
+       * @param {any} files - Json parsed string from filereader output
+       * @returns {Boolean} true if file is valid, else false
+       */
       function isValid(files) {
         const names = files.map((file) => {
           if (file.name.search(/.json/i) === -1) {
@@ -45,22 +46,25 @@ angular.module('fileUpload')
         }
       };
 
-      function isView() {
-        if ($rootScope.view === 'upload view') {
-          $scope.show = true;
-        } else {
-          $scope.show = false;
-        }
-      }
-
-
       $scope.$on('process', () => {
         self.error = null;
         $scope.processing = true;
         $scope.$apply();
       });
-      $scope.$on('files uploaded', fileDetails);
-      $scope.$on('change view', isView);
+
+      $scope.$on('files uploaded', () => {
+        $scope.uploaded_files = $rootScope.uploaded_files;
+        $scope.$apply();
+      });
+
+      $scope.$on('change view', () => {
+        if ($rootScope.view === 'upload view') {
+           $scope.processing = false;
+          $scope.show = true;
+        } else {
+          $scope.show = false;
+        }
+      });
     },
     controllerAs: 'uploadCtrl'
   });

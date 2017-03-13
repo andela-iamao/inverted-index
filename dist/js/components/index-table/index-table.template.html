@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="(key, value) in dataset.data">
-          <th scope="row">{{key}}</th>
+          <td scope="row">{{key}}</td>
           <td ng-repeat="title in dataset.title track by $index">
             <span ng-if="dataset.isFound(title, value)">
               <span class='text-check fa fa-check'></span>
