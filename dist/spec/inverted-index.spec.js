@@ -1,5 +1,5 @@
 const helpers = require('../js/helpers');
-const InvertedIndex = require('../js/inverted-index');
+const InvertedIndex = require('../js/InvertedIndex');
 const model = require('./testmodels');
 
 const InvertedIndexTest = new InvertedIndex();

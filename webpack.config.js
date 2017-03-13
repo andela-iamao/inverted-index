@@ -5,8 +5,8 @@ module.exports = {
   context: __dirname,
   devtool: debug ? 'inline-sourcemap' : null,
   entry: {
-      'inverted-index.build': ['./dist/js/inverted-index.js'],
-      'inverted-index.spec': './dist/spec/inverted-index.spec.js'
+      'InvertedIndex.build': ['./dist/js/InvertedIndex.js'],
+      'InvertedIndex.spec': './dist/spec/inverted-index.spec.js'
   },
   output: {
     path: __dirname + './dist/build',

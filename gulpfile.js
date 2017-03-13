@@ -17,7 +17,7 @@ gulp.task('start', ['webpack'], () => {
 });
 
 gulp.task('webpack', function() {
-  return gulp.src('dist/js/inverted-index.js')
+  return gulp.src('dist/js/InvertedIndex.js')
   .pipe(webpack(require('./webpack.config.js')))
   .pipe(gulp.dest('dist/build'));
 });
@@ -36,5 +36,5 @@ gulp.task('runserver', ['webpack', 'serve', 'watch-html'], () => {
   gulp.watch('./dist/*.html', ['watch-html']);
   gulp.watch('./dist/**/*.js', ['watch-html']);
   gulp.watch('./dist/css/*.css', ['watch-html']);
-  gulp.watch('./dist/js/inverted-index.js', ['scripts']);
+  gulp.watch('./dist/js/InvertedIndex.js', ['scripts']);
 });
